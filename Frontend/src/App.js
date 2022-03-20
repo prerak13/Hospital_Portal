@@ -1,8 +1,9 @@
 import "bootstrap/dist/css/bootstrap.css";
-import "./App.css";
 import Navigation from "./Components/Navigation";
 import Home from "./Components/Home/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AdminDashboard from "./Components/Dashboard/AdminDashboard";
+import NormalDashboard from "./Components/Dashboard/NormalDashboard";
 
 function App() {
   return (
@@ -10,7 +11,9 @@ function App() {
       <Navigation />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<AdminDashboard />} />
+          <Route path="/AdminDashboard" element={<AdminDashboard />} />
+          <Route path="/NormalDashboard" element={<NormalDashboard />} />
         </Routes>
       </BrowserRouter>
     </div>

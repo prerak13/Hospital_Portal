@@ -15,7 +15,14 @@ const Navigation = () => {
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">Brand</NavbarBrand>
+        <NavbarBrand href="/">
+          <img
+            src={require("../Assets/Images/Capture1.PNG")}
+            class="rounded float-left thumbnail"
+            alt="LOGO"
+            width={"50px"}
+          />
+        </NavbarBrand>
         <NavbarToggler
           onClick={() => {
             setIsOpen(!isOpen);
@@ -24,11 +31,11 @@ const Navigation = () => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink href="/">Home</NavLink>
+              <NavLink href="/AdminDashboard">Admin Dashboard</NavLink>
             </NavItem>
 
             <NavItem>
-              <NavLink href="/">Another Home</NavLink>
+              <NavLink href="/NormalDashboard">Normal Dashboard</NavLink>
             </NavItem>
           </Nav>
         </Collapse>
