@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.css";
 import Navigation from "./Components/Navigation";
-import Home from "./Components/Home/Home";
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AdminDashboard from "./Components/Dashboard/AdminDashboard";
 import NormalDashboard from "./Components/Dashboard/NormalDashboard";

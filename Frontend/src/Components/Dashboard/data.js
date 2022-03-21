@@ -100,9 +100,95 @@ const appointmentPerMonth = [
     count: 4,
   },
 ];
+
+const upcommingAppointments = [
+  {
+    Date: "15 August",
+    Time: "10am",
+    Location: "Dermatology-Halifax Hospital",
+  },
+  {
+    Date: "15 August",
+    Time: "10am",
+    Location: "Dermatology-Halifax Hospital",
+  },
+  {
+    Date: "15 August",
+    Time: "10am",
+    Location: "Dermatology-Halifax Hospital",
+  },
+  {
+    Date: "15 August",
+    Time: "10am",
+    Location: "Dermatology-Halifax Hospital",
+  },
+  {
+    Date: "15 August",
+    Time: "10am",
+    Location: "Dermatology-Halifax Hospital",
+  },
+  {
+    Date: "15 August",
+    Time: "10am",
+    Location: "Dermatology-Halifax Hospital",
+  },
+];
+
+const reports = [
+  {
+    Date: "15 August",
+    Test: "Blood Test",
+    Status: "In Progress",
+    ViewReport: "www.google.com",
+  },
+  {
+    Date: "15 August",
+    Test: "Blood Test",
+    Status: "In Progress",
+    ViewReport: "www.google.com",
+  },
+  {
+    Date: "15 August",
+    Test: "Blood Test",
+    Status: "In Progress",
+    ViewReport: "www.google.com",
+  },
+  {
+    Date: "15 August",
+    Test: "Blood Test",
+    Status: "In Progress",
+    ViewReport: "www.google.com",
+  },
+  {
+    Date: "15 August",
+    Test: "Blood Test",
+    Status: "In Progress",
+    ViewReport: "www.google.com",
+  },
+  {
+    Date: "15 August",
+    Test: "Blood Test",
+    Status: "In Progress",
+    ViewReport: "www.google.com",
+  },
+  {
+    Date: "15 August",
+    Test: "Blood Test",
+    Status: "In Progress",
+    ViewReport: "www.google.com",
+  },
+  {
+    Date: "15 August",
+    Test: "Blood Test",
+    Status: "In Progress",
+    ViewReport: "www.google.com",
+  },
+];
 export {
   employeeCountByDepartment,
   employeeCountByGender,
   vaccineData,
   appointmentPerMonth,
+  upcommingAppointments,
+  reports,
 };
