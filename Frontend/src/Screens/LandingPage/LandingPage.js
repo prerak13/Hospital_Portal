@@ -10,7 +10,7 @@ function LandingPage({ history }) {
 
   useEffect(() => {
     if (userInfo) {
-      history.push("/mynotes");
+      history.push("/login");
     }
   }, [history, userInfo]);
 
