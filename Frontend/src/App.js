@@ -26,7 +26,7 @@ import ProfileScreen from "./Screens/ProfileScreen/ProfileScreen";
         <Route path="/register" component={RegisterScreen} />
         <Route path="/profile" component={ProfileScreen} />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 }

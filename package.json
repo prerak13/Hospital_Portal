@@ -10,7 +10,7 @@
     "client": "npm start --prefix Frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
-  "author": "Piyush Agarwal",
+  "author": "csci5709group",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.26.1",

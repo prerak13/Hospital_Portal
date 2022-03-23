@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import MainScreen from "../../Components/MainScreen";
 import "./ProfileScreen.css";
+import Footer from "../../Components/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { updateProfile } from "../../Actions/userActions";
 import Loading from "../../Components/Loading";
@@ -141,6 +142,7 @@ const ProfileScreen = ({ location, history }) => {
           </Col>
         </Row>
       </div>
+      <Footer />
     </MainScreen>
   );
 };
