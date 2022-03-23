@@ -1,23 +1,35 @@
-import "bootstrap/dist/css/bootstrap.css";
-import Navigation from "./Components/Navigation";
-
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+// import "bootstrap/dist/css/bootstrap.css";
+import "./App.css";
+import "./App.css";
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import AdminDashboard from "./Components/Dashboard/AdminDashboard";
 import NormalDashboard from "./Components/Dashboard/NormalDashboard";
+import Footer from "./Components/Footer";
+import Header from "./Components/Header";
+import LandingPage from "./Screens/LandingPage/LandingPage";
+import LoginScreen from "./Screens/LoginScreen/LoginScreen";
+import RegisterScreen from "./Screens/RegisterScreen/RegisterScreen";
+import { useState } from "react";
+import ProfileScreen from "./Screens/ProfileScreen/ProfileScreen";
 
-function App() {
+  function App() {
+    const [search, setSearch] = useState("");
   return (
-    <div className="App">
-      <Navigation />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<AdminDashboard />} />
-          <Route path="/AdminDashboard" element={<AdminDashboard />} />
-          <Route path="/NormalDashboard" element={<NormalDashboard />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <Router>
+      <Header setSearch={(s) => setSearch(s)} />
+      <main className="App">
+        <Route path="/" element={<AdminDashboard />} />
+        <Route path="/AdminDashboard" element={<AdminDashboard />} />
+        <Route path="/NormalDashboard" element={<NormalDashboard />} />
+        <Route path="/" component={LandingPage} exact />
+        <Route path="/login" component={LoginScreen} />
+        <Route path="/register" component={RegisterScreen} />
+        <Route path="/profile" component={ProfileScreen} />
+      </main>
+      <Footer />
+    </Router>
   );
 }
+
 
 export default App;

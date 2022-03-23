@@ -30,7 +30,7 @@ class NormalDashboard extends Component {
                   <th>Date</th>
                   <th>Time</th>
                   <th>Location</th>
-                  <th>Add To Calander</th>
+                  <th>Add To Calender</th>
                 </tr>
               </thead>
               <tbody>
