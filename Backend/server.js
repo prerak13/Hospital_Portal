@@ -5,6 +5,7 @@ import colors from "colors";
 import path from "path";
 
 import userRoutes from "./routes/userRoutes.js";
+import docAppointmentRoutes from "./routes/docAppointmentRoutes.js";
 import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 
 dotenv.config();
@@ -16,6 +17,7 @@ const app = express(); // main thing
 app.use(express.json()); // to accept json data
 
 app.use("/api/users", userRoutes);
+app.use("/api/docappointment", docAppointmentRoutes);
 
 // --------------------------deployment------------------------------
 const __dirname = path.resolve();

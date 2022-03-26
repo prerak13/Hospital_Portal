@@ -1,7 +1,7 @@
 // import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 import "./App.css";
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import AdminDashboard from "./Components/Dashboard/AdminDashboard";
 import NormalDashboard from "./Components/Dashboard/NormalDashboard";
 import Footer from "./Components/Footer";
@@ -11,9 +11,12 @@ import LoginScreen from "./Screens/LoginScreen/LoginScreen";
 import RegisterScreen from "./Screens/RegisterScreen/RegisterScreen";
 import { useState } from "react";
 import ProfileScreen from "./Screens/ProfileScreen/ProfileScreen";
+import BookAppointmentScreen from "./Screens/AppointmentScreen/BookAppointmentScreen";
+import ViewAppointmentScreen from "./Screens/AppointmentScreen/ViewAppointmentScreen";
+import RescheduleAppointmentScreen from "./Screens/AppointmentScreen/RescheduleAppointmentScreen";
 
-  function App() {
-    const [search, setSearch] = useState("");
+function App() {
+  const [search, setSearch] = useState("");
   return (
     <Router>
       <Header setSearch={(s) => setSearch(s)} />
@@ -25,11 +28,16 @@ import ProfileScreen from "./Screens/ProfileScreen/ProfileScreen";
         <Route path="/login" component={LoginScreen} />
         <Route path="/register" component={RegisterScreen} />
         <Route path="/profile" component={ProfileScreen} />
+        <Route path="/appointment" component={BookAppointmentScreen} />
+        <Route path="/viewappointment" component={ViewAppointmentScreen} />
+        <Route
+          path="/rescheduleappointment"
+          component={RescheduleAppointmentScreen}
+        />
       </main>
       {/* <Footer /> */}
     </Router>
   );
 }
-
 
 export default App;

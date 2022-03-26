@@ -85,4 +85,10 @@ const userProfileupdate = asyncHandler(async (req, res) => {
   }
 });
 
-export { Userauthentication, userProfileupdate, Userregistration };
+const doctorName = async (req, res) => {
+  const names = await User.find({ isAdmin: false }, "name ");
+  console.log(names);
+  return res.json(names);
+};
+
+export { Userauthentication, userProfileupdate, Userregistration, doctorName };
