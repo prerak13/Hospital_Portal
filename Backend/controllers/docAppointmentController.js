@@ -10,7 +10,6 @@ const bookAppointment = async (req, res) => {
     selectedTime,
     dateTime,
   } = req.body.data;
-  console.log(req.body.data);
 
   const appointment = await DocAppointment.create({
     email,
@@ -46,11 +45,11 @@ const deleteAppointment = async (req, res) => {
 
 const updateAppointment = async (req, res) => {
   const appointment = await DocAppointment.findById(req.params.id);
-
   if (appointment) {
     appointment.dateTime = req.body.dateTime;
     appointment.selectedDate = req.body.selectedDate;
     appointment.selectedTime = req.body.selectedTime;
+    appointment.specialInstruction = req.body.specialInstruction;
   }
 
   const updatedAppointment = await appointment.save();

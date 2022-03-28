@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MainScreen from "../../Components/MainScreen";
 import Footer from "../../Components/Footer";
 import { Form, Row, Col } from "react-bootstrap";
@@ -10,8 +10,8 @@ import { useHistory } from "react-router-dom";
 
 function RescheduleAppointmentScreen(props) {
   const history = useHistory();
-  const [dataReceived, setDataReceived] = useState(props);
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [specialInstruction, setSpecialInstruction] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,6 +19,7 @@ function RescheduleAppointmentScreen(props) {
     formData.selectedDate = selectedDate.toDateString();
     formData.selectedTime = selectedDate.toTimeString();
     formData.dateTime = selectedDate;
+    formData.specialInstruction = specialInstruction;
 
     axios.put(`/api/docappointment/${formData._id}`, formData).then((res) => {
       if (res.status === 200) {
@@ -27,6 +28,10 @@ function RescheduleAppointmentScreen(props) {
     });
   };
 
+  useEffect(() => {
+    setSpecialInstruction(props.history.location.state.specialInstruction);
+  }, []);
+
   return (
     <MainScreen title="Reschedule Appointment">
       <div>
@@ -34,35 +39,54 @@ function RescheduleAppointmentScreen(props) {
           <Col md={6}>
             <Form onSubmit={handleSubmit}>
               <Form.Group controlId="name">
-                <Form.Label>Patient Name:</Form.Label>
-                <Form.Label>
-                  {props.history.location.state.patientName}
+                <Form.Label className="font-weight-bold">
+                  Patient Name
                 </Form.Label>
+                <Form.Control
+                  type="text"
+                  readOnly
+                  value={props.history.location.state.patientName}
+                ></Form.Control>
               </Form.Group>
 
               <Form.Group controlId="emailid">
-                <Form.Label>Patient Email Id:</Form.Label>
-                <Form.Label>{props.history.location.state.email}</Form.Label>
+                <Form.Label className="font-weight-bold">
+                  Patient Email Id:
+                </Form.Label>
+                <Form.Control
+                  type="text"
+                  readOnly
+                  value={props.history.location.state.email}
+                ></Form.Control>
               </Form.Group>
 
               <Form.Group controlId="specialInstruction">
-                <Form.Label>Special Instruction:</Form.Label>
-                <Form.Label>
-                  {props.history.location.state.specialInstruction}
+                <Form.Label className="font-weight-bold">
+                  Special Instruction:
                 </Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter Description of Appointment"
+                  value={specialInstruction}
+                  onChange={(e) => setSpecialInstruction(e.target.value)}
+                ></Form.Control>
               </Form.Group>
 
               <Form.Group controlId="docName">
-                <Form.Label>Doctor Name and Specilization:</Form.Label>
-                <Form.Label>
-                  {props.history.location.state.docSelected}
+                <Form.Label className="font-weight-bold">
+                  Doctor Name and Specilization:
                 </Form.Label>
+                <Form.Control
+                  readOnly
+                  type="text"
+                  value={props.history.location.state.docSelected}
+                ></Form.Control>
               </Form.Group>
 
               {/* referenced from https://www.youtube.com/watch?v=tojwQEdI-QI 
                         and https://reactdatepicker.com/#example-include-times */}
               <Form.Group controlId="calendar">
-                <Form.Label>
+                <Form.Label className="font-weight-bold">
                   Pick a new Date and Time to Book your Appointment
                 </Form.Label>
                 <DatePicker

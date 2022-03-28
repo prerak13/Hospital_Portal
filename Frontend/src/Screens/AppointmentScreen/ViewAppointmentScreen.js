@@ -20,7 +20,6 @@ function ViewAppointmentScreen() {
 
   //referenced from https://www.freecodecamp.org/news/how-to-perform-crud-operations-using-react/
   const handleDelete = (id) => {
-    console.log(id);
     if (window.confirm("Are you sure you want to delete your appointment?")) {
       axios.delete(`/api/docappointment/${id}`);
       findAppointments(userInfo.email);
@@ -28,13 +27,10 @@ function ViewAppointmentScreen() {
   };
 
   const handleReschedule = (data) => {
-    console.log(data);
     if (
       window.confirm("Are you sure you want to reschedule your appointment?")
     ) {
-      history.push(
-        { pathname: "/rescheduleappointment",
-         state: data });
+      history.push({ pathname: "/rescheduleappointment", state: data });
     }
   };
 

@@ -25,7 +25,6 @@ const Userauthentication = asyncHandler(async (req, res) => {
 
 const Userregistration = asyncHandler(async (req, res) => {
   const { name, email, ispatient, password, pic } = req.body;
-  console.log(req.body);
   const userExists = await User.findOne({ email });
 
   if (userExists) {
@@ -87,7 +86,6 @@ const userProfileupdate = asyncHandler(async (req, res) => {
 
 const doctorName = async (req, res) => {
   const names = await User.find({ isAdmin: false }, "name ");
-  console.log(names);
   return res.json(names);
 };
 
