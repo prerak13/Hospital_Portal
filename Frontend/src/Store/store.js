@@ -9,7 +9,7 @@ export const login = async (email, password) => {
         };
 
         const { data } = await axios.post(
-            "http://localhost:4000/api/user/login",
+            "http://localhost:5000/api/user/login",
             { email, password },
             config
         );
@@ -29,7 +29,7 @@ export const postBlog = async (data) => {
     data.author=userInfo.name;
 
     await axios.post(
-        'http://localhost:4000/api/blog/add_blog',
+        'http://localhost:5000/api/blog/add_blog',
         data,
         {
             headers: {
@@ -48,7 +48,7 @@ export const postBlog = async (data) => {
 export const fetchBlog = async () => {
     
    await axios.get(
-        'http://localhost:4000/api/blog/fetch_blog',
+        'http://localhost:5000/api/blog/fetch_blog',
     ).then(res => {
         return res.data;
     }

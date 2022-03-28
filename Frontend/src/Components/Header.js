@@ -6,6 +6,7 @@ import {
   Nav,
   Navbar,
   NavDropdown,
+  NavLink,  
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {} from "react-router-dom";
@@ -43,6 +44,16 @@ function Header({ setSearch }) {
             )}
           </Nav>
           <Nav>
+          <Nav.Link href='https://www.google.com' activeStyle>
+                        Careers
+                    </Nav.Link>
+          </Nav>
+          <Nav>
+          <Nav.Link href='/Blogs' activeStyle>
+                        Blogs
+                    </Nav.Link>
+          </Nav>
+          <Nav>
             {userInfo ? (
               <>
               
@@ -62,6 +73,7 @@ function Header({ setSearch }) {
               </>
             ) : (
               <Nav.Link href="/login">Login</Nav.Link>
+
             )}
           </Nav>
         </Navbar.Collapse>
