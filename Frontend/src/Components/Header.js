@@ -9,7 +9,7 @@ import {
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {} from "react-router-dom";
-import { logout } from "../Actions/userActions";
+import { logout } from "../Apiactions/userapis";
 
 function Header({ setSearch }) {
   const dispatch = useDispatch();

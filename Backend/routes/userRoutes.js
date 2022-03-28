@@ -1,12 +1,8 @@
 import express from "express";
-import {
-  Userauthentication,
-  Userregistration,
-  userProfileupdate,
-} from "../controllers/userController.js";
+import { Userregistration, Userauthentication, userProfileupdate,} from "../controllers/userController.js";
 import { protect } from "../middleware/authMiddleware.js";
-const router = express.Router();
 
+const router = express.Router();
 router.route("/").post(Userregistration);
 router.post("/login", Userauthentication);
 router.route("/profile").post(protect, userProfileupdate);

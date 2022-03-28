@@ -1,10 +1,12 @@
-import asyncHandler from "express-async-handler";
+import token from "../utils/generatetoken.js";
 import User from "../models/userModel.js";
-import generatedToken from "../utils/generatetoken.js";
+import asyncHandler from "express-async-handler";
 
+//Controller for users that will have the functions to authenticate,register and update profile
+
+//authenticate function
 const Userauthentication = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
-
   const user = await User.findOne({ email });
 
   if (user && (await user.matchPassword(password))) {
@@ -14,31 +16,29 @@ const Userauthentication = asyncHandler(async (req, res) => {
       email: user.email,
       ispatient: user.ispatient,
       isAdmin: user.isAdmin,
-      pic: user.pic,
-      token: generatedToken(user._id),
+      token: token(user._id),
     });
   } else {
     res.status(401);
-    throw new Error("Invalid Email or Password");
+    throw new Error("please enter valid mail and password");
   }
 });
 
+//registration function
 const Userregistration = asyncHandler(async (req, res) => {
-  const { name, email, ispatient, password, pic } = req.body;
+  const { name, email, ispatient, password } = req.body;
   console.log(req.body);
-  const userExists = await User.findOne({ email });
-
-  if (userExists) {
+  const userexists = await User.findOne({ email });
+  if (userexists) {
     res.status(404);
-    throw new Error("User exists");
+    throw new Error("User already present in database");
   }
 
   const user = await User.create({
     name,
     email,
     ispatient,
-    password,
-    pic,
+    password
   });
 
   if (user) {
@@ -48,8 +48,7 @@ const Userregistration = asyncHandler(async (req, res) => {
       email: user.email,
       ispatient: user.ispatient,
       isAdmin: user.isAdmin,
-      pic: user.pic,
-      token: generatedToken(user._id),
+      token: token(user._id),
     });
   } else {
     res.status(400);
@@ -57,31 +56,28 @@ const Userregistration = asyncHandler(async (req, res) => {
   }
 });
 
+//update profile function
 const userProfileupdate = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
 
   if (user) {
     user.name = req.body.name || user.name;
     user.email = req.body.email || user.email;
-    user.pic = req.body.pic || user.pic;
     if (req.body.password) {
       user.password = req.body.password;
     }
-
-    const updatedUser = await user.save();
-
+    const userupdate = await user.save();
     res.json({
-      _id: updatedUser._id,
-      name: updatedUser.name,
-      email: updatedUser.email,
-      ispatient: updatedUser.ispatient,
-      pic: updatedUser.pic,
-      isAdmin: updatedUser.isAdmin,
-      token: generatedToken(updatedUser._id),
+      _id: userupdate._id,
+      name: userupdate.name,
+      email: userupdate.email,
+      ispatient: userupdate.ispatient,
+      isAdmin: userupdate.isAdmin,
+      token: token(userupdate._id),
     });
   } else {
     res.status(404);
-    throw new Error("User Not Exists");
+    throw new Error("no user found");
   }
 });
 
