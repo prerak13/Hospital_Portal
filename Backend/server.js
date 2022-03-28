@@ -6,8 +6,10 @@ import path from "path";
 
 import userRoutes from "./routes/userRoutes.js";
 import docAppointmentRoutes from "./routes/docAppointmentRoutes.js";
+import dashboardRoutes from "./routes/dashboardRoutes.js";
 import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 
+import userDashboardRoutes from "./routes/userDashboardRoutes.js";
 dotenv.config();
 
 connectDB();
@@ -18,6 +20,8 @@ app.use(express.json()); // to accept json data
 
 app.use("/api/users", userRoutes);
 app.use("/api/docappointment", docAppointmentRoutes);
+app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/normalDash/", userDashboardRoutes);
 
 // --------------------------deployment------------------------------
 const __dirname = path.resolve();
@@ -39,7 +43,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(notFound);
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 app.listen(
   PORT,

@@ -14,17 +14,18 @@ import ProfileScreen from "./Screens/ProfileScreen/ProfileScreen";
 import BookAppointmentScreen from "./Screens/AppointmentScreen/BookAppointmentScreen";
 import ViewAppointmentScreen from "./Screens/AppointmentScreen/ViewAppointmentScreen";
 import RescheduleAppointmentScreen from "./Screens/AppointmentScreen/RescheduleAppointmentScreen";
+import Chatbot from "./Components/Chatbot/Chatbot";
 
 function App() {
   const [search, setSearch] = useState("");
   return (
     <Router>
       <Header setSearch={(s) => setSearch(s)} />
+      <Chatbot />
       <main className="App">
-        <Route path="/" element={<AdminDashboard />} />
-        <Route path="/AdminDashboard" element={<AdminDashboard />} />
-        <Route path="/NormalDashboard" element={<NormalDashboard />} />
-        <Route path="/" component={LandingPage} exact />
+        <Route path="/" element={AdminDashboard} />
+        <Route path="/AdminDashboard" component={AdminDashboard} />
+        <Route path="/NormalDashboard" component={NormalDashboard} />
         <Route path="/login" component={LoginScreen} />
         <Route path="/register" component={RegisterScreen} />
         <Route path="/profile" component={ProfileScreen} />
@@ -35,7 +36,7 @@ function App() {
           component={RescheduleAppointmentScreen}
         />
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </Router>
   );
 }

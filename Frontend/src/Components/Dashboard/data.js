@@ -1,8 +1,8 @@
-const employeeCountByGender = {
-  male: 10,
-  female: 15,
-  others: 2,
-};
+// const employeeCountByGender = {
+//   male: 10,
+//   female: 15,
+//   others: 2,
+// };
 
 const employeeCountByDepartment = [
   {
@@ -186,7 +186,7 @@ const reports = [
 ];
 export {
   employeeCountByDepartment,
-  employeeCountByGender,
+  // employeeCountByGender,
   vaccineData,
   appointmentPerMonth,
   upcommingAppointments,
