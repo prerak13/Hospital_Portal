@@ -17,15 +17,17 @@ function RegisterScreen({ history }) {
   const userRegister = useSelector((state) => state.userRegister);
   const { loading, error, userInfo } = userRegister;
 
+  useEffect(() => {
+    if (userInfo) {
+      history.push("/");
+    }
+  }, [history, userInfo]);
+
   const submitHandler = (e) => {
     e.preventDefault();
     if (password !== confirmpassword) {
       setMessage("Passwords do not match");
-    } else
-    { dispatch(register(name, email, ispatient, password));
-      alert('You are successfully registered.');
-    }
-    history.push("/login");
+    } else dispatch(register(name, email, ispatient, password));
   };
 
   return (

@@ -4,7 +4,8 @@ import colors from "colors";
 import connectDB from "./config/db.js";
 import dotenv from "dotenv";
 import userRoutes from "./routes/userRoutes.js";
-import { notFound,errorHandler} from "./middleware/errorMiddleware.js";
+import docAppointmentRoutes from "./routes/docAppointmentRoutes.js";
+import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 
 dotenv.config();
 connectDB();
@@ -12,6 +13,7 @@ connectDB();
 const app = express(); 
 app.use(express.json()); 
 app.use("/api/users", userRoutes);
+app.use("/api/docappointment", docAppointmentRoutes);
 
 const __dirname = path.resolve();
 //deploying app
