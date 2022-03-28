@@ -85,7 +85,7 @@ const userProfileupdate = asyncHandler(async (req, res) => {
 });
 
 const doctorName = async (req, res) => {
-  const names = await User.find({ isAdmin: false }, "name ");
+  const names = await User.find({ ispatient: false }, "name ");
   return res.json(names);
 };
 
