@@ -15,11 +15,11 @@ dotenv.config();
 connectDB();
 
 const app = express(); // main thing
-const corsOptions={
-  origin:'*',
-  credentials:true,
-  optionSuccessStatus:200,
-}
+const corsOptions = {
+  origin: "*",
+  credentials: true,
+  optionSuccessStatus: 200,
+};
 app.use(express.json()); // to accept json data
 app.use(cors(corsOptions));
 
@@ -33,10 +33,10 @@ app.use("/api/normalDash/", userDashboardRoutes);
 const __dirname = path.resolve();
 //deploying app
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/Frontend/build")));
+  app.use(express.static(path.join(__dirname, "../Frontend/build")));
 
   app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname, "Frontend", "build", "index.html"))
+    res.sendFile(path.resolve(__dirname, "../Frontend/build/index.html"))
   );
 } else {
   app.get("/", (req, res) => {

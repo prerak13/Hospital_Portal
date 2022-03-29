@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 import {
   Chart as ChartJS,
@@ -14,7 +15,6 @@ import {
   ArcElement,
 } from "chart.js";
 import { Bar, Line, Pie } from "react-chartjs-2";
-import { vaccineData } from "./data";
 
 const axios = require("axios").default;
 ChartJS.register(
@@ -38,11 +38,18 @@ const vaccineChartOptions = {
   },
 };
 
-const AdminDashboard = () => {
-  const [empCountGender, setEmpCountGender] = useState([]); //done
-  const [empCountDept, setEmpCountDept] = useState([]); //done
+const AdminDashboard = ({ history }) => {
+  const [empCountGender, setEmpCountGender] = useState([]);
+  const [empCountDept, setEmpCountDept] = useState([]);
   const [appointmentMonthly, setAppointmentMonthly] = useState([]);
-  const [empCountWork, setEmpCountWork] = useState([]); //done
+  const [empCountWork, setEmpCountWork] = useState([]);
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  if (!userInfo) {
+    history.push("/login");
+  }
 
   const vaccineBookdata = {
     labels: appointmentMonthly.map((x) => x.month),
@@ -170,8 +177,6 @@ const AdminDashboard = () => {
       },
     ],
   };
-  console.log(1, empCountGender);
-  console.log(2, appointmentMonthly);
 
   return (
     <Container>
