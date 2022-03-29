@@ -4,6 +4,7 @@
  */
 import React, { useState, useEffect } from "react";
 import Posts from "../Posts/Posts";
+import { Form, Button, Row, Col } from "react-bootstrap";
 
 
 const Blogs = () => {
@@ -17,8 +18,8 @@ const Blogs = () => {
         <div className="main-container">
             <h1 className="main-heading">
 
-                <center>Write Blog</center></h1>
-                <a href="/postblog">Create your blog</a>
+                <center>Blog Page</center></h1>
+                <Button href="/postblog">Create your blog</Button>
                 
                 
             <Posts />
