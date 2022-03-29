@@ -12,6 +12,7 @@ function RegisterScreen({ history }) {
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState(null);
+  const [er, setError] = useState(false);
 
   const dispatch = useDispatch();
   const userRegister = useSelector((state) => state.userRegister);
@@ -55,20 +56,24 @@ function RegisterScreen({ history }) {
                 <label for="exampleInputEmail12">Email address</label>
                 <input  type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} required class="form-control" id="exampleInputEmail12"/>
             </div>  
-            <label className="" for="exampleusername">Are you a patient?</label>        
-            <select value={ispatient} class="form-control" id="pateintboolean" onChange={(e) => setIspatient(e.target.value)}>                          
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-            </select>
-            <div class="form-group mt-1">
+            <label className="d-block" for="ipatient">Are you a patient?</label>     
+            <div  className="row ml-4">
+            <label className="form-check-label" for="flexCheckDefault1"> Yes</label>
+            <input id="flexCheckDefault1" className="form-check-input" type="checkbox" name="flexCheckDefault1" value="true" onChange={(e) => setIspatient(e.target.value)}/>
+            </div>
+            <div className="row ml-4">
+              <label className="form-check-label" for="flexCheckDefault2">No</label>
+              <input id="flexCheckDefault2" className="form-check-input" type="checkbox" name="flexCheckDefault2" value="false" onChange={(e) => setIspatient(e.target.value)}/>
+            </div>
+            <div className="form-group mt-1">
                 <label for="exampleInputPassword1">Password</label>
                 <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} required class="form-control" id="exampleInputPassword1"/>
             </div>
-            <div class="form-group mt-1">
+            <div className="form-group mt-1">
                 <label for="examplepassword">Confirm Password</label>
                 <input placeholder="Confirm Password" onChange={(e) => setConfirmPassword(e.target.value)} required class="form-control" id="examplepassword"/>
             </div>
-            <div class="d-flex justify-content-center">
+            <div className="d-flex justify-content-center">
                 <button type="submit" required class="btn btn-primary mt-1 d-flex justify-content-center">Register</button>
             </div>
             </form>

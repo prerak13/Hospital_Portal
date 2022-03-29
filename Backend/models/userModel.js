@@ -14,8 +14,7 @@ const userSchema = mongoose.Schema(
     },
     ispatient: {
       type: String,
-      required: true,
-      default: "true",
+      required: true
     },
     password: {
       type: String,
