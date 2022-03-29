@@ -32,7 +32,22 @@ function RegisterScreen({ history }) {
 
   return (
     <div class="container w-50 border border-primary mt-2 px-4 py-1">
-      <h1 style={{ fontSize: "36px", fontFamily: "Trebuchet MS", color:"black"}} class="d-flex justify-content-center text-primary m-1">REGISTER<img style={{width:"40px", height:"40px", marginTop:"0px", marginLeft:"5px"}} src="/Capture1.PNG" alt="Italian Trulli"></img></h1>
+      <h1
+        style={{ fontSize: "36px", fontFamily: "Trebuchet MS", color: "black" }}
+        class="d-flex justify-content-center text-primary m-1"
+      >
+        REGISTER
+        <img
+          style={{
+            width: "40px",
+            height: "40px",
+            marginTop: "0px",
+            marginLeft: "5px",
+          }}
+          src="/Capture1.PNG"
+          alt="Italian Trulli"
+        ></img>
+      </h1>
       {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
       {message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
         <form onSubmit={submitHandler}>

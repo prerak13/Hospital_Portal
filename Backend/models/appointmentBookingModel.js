@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const docAppointmentSchema = mongoose.Schema({
+const appointmentSchema = mongoose.Schema({
   email: {
     type: String,
     required: true,
@@ -31,6 +31,9 @@ const docAppointmentSchema = mongoose.Schema({
   },
 });
 
-const DocAppointment = mongoose.model("docappointments", docAppointmentSchema);
+const AppointmentSchemaModel = mongoose.model(
+  "docappointments",
+  appointmentSchema
+);
 
-export default DocAppointment;
+export default AppointmentSchemaModel;

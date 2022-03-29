@@ -91,7 +91,6 @@ const ProfileScreen = ({ location, history }) => {
           </Col>
         </Row>
       </div>
-      <Footer />
     </MainScreen>
   );
 };

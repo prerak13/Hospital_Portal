@@ -1,4 +1,4 @@
-import DocAppointment from "../models/docAppointmentModel.js";
+import AppointmentSchemaModel from "../models/appointmentBookingModel.js";
 
 const bookAppointment = async (req, res) => {
   const {
@@ -11,7 +11,7 @@ const bookAppointment = async (req, res) => {
     dateTime,
   } = req.body.data;
 
-  const appointment = await DocAppointment.create({
+  const appointment = await AppointmentSchemaModel.create({
     email,
     specialInstruction,
     patientName,
@@ -34,17 +34,21 @@ const bookAppointment = async (req, res) => {
 };
 
 const getBookedAppointment = async (req, res) => {
-  const appointment = await DocAppointment.find({ email: req.params.email });
+  const appointment = await AppointmentSchemaModel.find({
+    email: req.params.email,
+  });
   return res.json(appointment);
 };
 
 const deleteAppointment = async (req, res) => {
-  const appointment = await DocAppointment.deleteOne({ _id: req.params.id });
+  const appointment = await AppointmentSchemaModel.deleteOne({
+    _id: req.params.id,
+  });
   return res.json(appointment);
 };
 
 const updateAppointment = async (req, res) => {
-  const appointment = await DocAppointment.findById(req.params.id);
+  const appointment = await AppointmentSchemaModel.findById(req.params.id);
   if (appointment) {
     appointment.dateTime = req.body.dateTime;
     appointment.selectedDate = req.body.selectedDate;

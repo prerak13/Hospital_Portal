@@ -3,17 +3,32 @@ import path from "path";
 import colors from "colors";
 import connectDB from "./config/db.js";
 import dotenv from "dotenv";
+import blogRoutes from "./routes/blogRoute.js";
+import cors from "cors";
 import userRoutes from "./routes/userRoutes.js";
 import docAppointmentRoutes from "./routes/docAppointmentRoutes.js";
+import dashboardRoutes from "./routes/dashboardRoutes.js";
 import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 
+import userDashboardRoutes from "./routes/userDashboardRoutes.js";
 dotenv.config();
 connectDB();
-//running app
-const app = express(); 
-app.use(express.json()); 
+
+const app = express(); // main thing
+const corsOptions={
+  origin:'*',
+  credentials:true,
+  optionSuccessStatus:200,
+}
+app.use(express.json()); // to accept json data
+app.use(cors(corsOptions));
+
 app.use("/api/users", userRoutes);
+app.use(errorHandler);
+app.use("/api/blog", blogRoutes);
 app.use("/api/docappointment", docAppointmentRoutes);
+app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/normalDash/", userDashboardRoutes);
 
 const __dirname = path.resolve();
 //deploying app
@@ -29,11 +44,10 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-app.use(errorHandler);
 app.use(notFound);
-
-//port to run backend code, its different from frontend which is 3000
+app.use(errorHandler);
 const PORT = process.env.PORT || 5000;
+
 app.listen(
   PORT,
   console.log(
