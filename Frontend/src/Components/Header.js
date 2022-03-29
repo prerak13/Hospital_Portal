@@ -1,7 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {} from "react-router-dom";
-import {Container,Nav,Navbar,NavDropdown,Form, FormControl, NavLink} from "react-bootstrap";
+import {
+  Container,
+  Nav,
+  Navbar,
+  NavDropdown,
+  Form,
+  FormControl,
+  NavLink,
+} from "react-bootstrap";
 import { logout } from "../Apiactions/userapis";
 
 function Header({ setSearch }) {
@@ -35,7 +43,7 @@ function Header({ setSearch }) {
           )}
 
           <Nav>
-            <Nav.Link href="https://www.google.com" activeStyle>
+            <Nav.Link href="http://52.90.40.218:3000/" activeStyle>
               Careers
             </Nav.Link>
           </Nav>
