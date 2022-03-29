@@ -7,6 +7,7 @@ const Blogs = () => {
     useEffect(() => {
         setUserInfo(JSON.parse(localStorage.getItem("userInfo")))
       }, [])
+    if(userInfo!=null){
     if(!userInfo.isPatient && !userInfo.isAdmin){
     return (
         <div className="main-container">
@@ -20,6 +21,7 @@ const Blogs = () => {
         </div>
     );
     }
+}
     else{
          return (
             <div className="main-container">
