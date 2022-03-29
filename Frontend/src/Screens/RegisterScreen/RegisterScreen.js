@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Button, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { register } from "../../Apiactions/userapis";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -7,7 +7,7 @@ import ErrorMessage from "../../Components/ErrorMessage";
 
 function RegisterScreen({ history }) {
   const [email, setEmail] = useState("");
-  const [ispatient, setispatient] = useState("");
+  const [ispatient, setIspatient] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
@@ -25,6 +25,7 @@ function RegisterScreen({ history }) {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    console.log(ispatient+"jooooo");
     if (password !== confirmpassword) {
       setMessage("Passwords do not match");
     } else dispatch(register(name, email, ispatient, password));
@@ -38,12 +39,7 @@ function RegisterScreen({ history }) {
       >
         REGISTER
         <img
-          style={{
-            width: "40px",
-            height: "40px",
-            marginTop: "0px",
-            marginLeft: "5px",
-          }}
+          style={{width: "40px", height: "40px", marginTop: "0px", marginLeft: "5px",}}
           src="/Capture1.PNG"
           alt="Italian Trulli"
         ></img>
@@ -60,7 +56,7 @@ function RegisterScreen({ history }) {
                 <input  type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} required class="form-control" id="exampleInputEmail12"/>
             </div>  
             <label className="" for="exampleusername">Are you a patient?</label>        
-            <select value={ispatient} class="form-control" id="pateintboolean" onChange={(e) => setispatient(e.target.value)}>                          
+            <select value={ispatient} class="form-control" id="pateintboolean" onChange={(e) => setIspatient(e.target.value)}>                          
                 <option value="true">Yes</option>
                 <option value="false">No</option>
             </select>

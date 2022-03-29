@@ -5,10 +5,10 @@ export const userLoginReducer = (state = {}, action) => {
   switch (action.type) {
     case login_request:
       return { loading: true };
-    case login_success:
-      return { loading: false, userInfo: action.payload };
     case login_fail:
       return { loading: false, error: action.payload };
+    case login_success:
+      return { loading: false, userInfo: action.payload };
     case logout_success:
       return {};
     default:
@@ -20,10 +20,10 @@ export const userRegisterReducer = (state = {}, action) => {
   switch (action.type) {
     case register_request:
       return { loading: true };
-    case registered:
-      return { loading: false, userInfo: action.payload };
     case register_fail:
       return { loading: false, error: action.payload };
+    case registered:
+      return { loading: false, userInfo: action.payload };
     default:
       return state;
   }
@@ -33,10 +33,10 @@ export const userUpdateReducer = (state = {}, action) => {
   switch (action.type) {
     case update_request:
       return { loading: true };
+    case update_failed:
+        return { loading: false, error: action.payload, success: false };
     case update_success:
       return { loading: false, userInfo: action.payload, success: true };
-    case update_failed:
-      return { loading: false, error: action.payload, success: false };
     default:
       return state;
   }

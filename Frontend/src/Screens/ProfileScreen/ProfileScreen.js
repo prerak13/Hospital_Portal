@@ -1,23 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
-import MainScreen from "../../Components/MainScreen";
-import "./ProfileScreen.css";
-import Footer from "../../Components/Footer";
 import { useDispatch, useSelector } from "react-redux";
-import { updateProfile } from "../../Apiactions/userapis";
+import MainScreen from "../../Components/MainScreen";
 import Loading from "../../Components/Loading";
+import "./ProfileScreen.css";
 import ErrorMessage from "../../Components/ErrorMessage";
+import { updateProfile } from "../../Apiactions/userapis";
 
 const ProfileScreen = ({ location, history }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
-
   const userUpdate = useSelector((state) => state.userUpdate);
   const { loading, error, success } = userUpdate;
 
@@ -36,56 +33,35 @@ const ProfileScreen = ({ location, history }) => {
   };
 
   return (
-    <MainScreen title="EDIT PROFILE">
+    <MainScreen title="PROFILE SECTION">
       <div>
-        <Row className="profileContainer">
-          <Col md={6}>
+        <Row className="section">
+          <Col md={8}>
             <Form onSubmit={submitHandler}>
               {loading && <Loading />}
-              {success && (
-                <ErrorMessage variant="success">
-                  Updated Successfully
-                </ErrorMessage>
-              )}
               {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+              {success && (<ErrorMessage variant="success"> Profile Updated Successfully</ErrorMessage>)}
               <Form.Group controlId="name">
-                <Form.Label>Name</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter Name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                ></Form.Control>
+                <Form.Label>Username</Form.Label>
+                <Form.Control type="text" placeholder="Enter Name" value={name} onChange={(e) => setName(e.target.value)}></Form.Control>
               </Form.Group>
               <Form.Group controlId="email">
                 <Form.Label>Email Address</Form.Label>
-                <Form.Control
-                  type="email"
-                  placeholder="Enter Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                <Form.Control type="email" placeholder="Enter Email"value={email} onChange={(e) => setEmail(e.target.value)}
                 ></Form.Control>
               </Form.Group>
               <Form.Group controlId="password">
                 <Form.Label>Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder="Enter Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                <Form.Control type="password" placeholder="Enter Password" value={password} onChange={(e) => setPassword(e.target.value)}
                 ></Form.Control>
               </Form.Group>
               <Form.Group controlId="confirmPassword">
                 <Form.Label>Confirm Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder="Confirm Password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
+                <Form.Control type="password" placeholder="Confirm Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}
                 ></Form.Control>
               </Form.Group>
               <Button type="submit" varient="primary">
-                Update
+                Update Profile
               </Button>
             </Form>
           </Col>
