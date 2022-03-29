@@ -5,7 +5,6 @@
 
 import React, { useState, useEffect } from "react";
 import MainScreen from "../../Components/MainScreen";
-import Footer from "../../Components/Footer";
 import { Form, Row, Col } from "react-bootstrap";
 import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
@@ -117,7 +116,6 @@ function RescheduleAppointmentScreen(props) {
           </Col>
         </Row>
       </div>
-      <Footer />
     </MainScreen>
   );
 }

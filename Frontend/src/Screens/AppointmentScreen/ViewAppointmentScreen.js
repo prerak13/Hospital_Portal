@@ -4,7 +4,6 @@
  */
 
 import MainScreen from "../../Components/MainScreen";
-import Footer from "../../Components/Footer";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Table, Button } from "react-bootstrap";
