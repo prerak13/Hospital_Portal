@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { Button, Container, Row } from "react-bootstrap";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Button, Container, Row } from "react-bootstrap";
 import "./LandingStyles.css";
 
 function LandingPage({ history }) {
@@ -15,13 +15,13 @@ function LandingPage({ history }) {
   }, [history, userInfo]);
 
   return (
-    <div className="main">
+    <div className="screenpage">
       <Container>
         <Row>
-          <div className="intro-text">
-            <div className="buttonContainer">
+          <div className="headingtext">
+            <div className="buttons">
               <Link to="/login">
-                <Button size="lg" className="landingbutton">
+                <Button size="lg" className="buttonstyle">
                   Login
                 </Button>
               </Link>
@@ -29,9 +29,9 @@ function LandingPage({ history }) {
                 <Button
                   variant="outline-primary"
                   size="lg"
-                  className="landingbutton"
+                  className="buttonstyle"
                 >
-                  Signup
+                  Sign up
                 </Button>
               </Link>
             </div>

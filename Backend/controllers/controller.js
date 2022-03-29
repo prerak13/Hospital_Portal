@@ -13,5 +13,4 @@ const testGet = (req, res) => {
 };
 
 const controller = { testGet };
-
 module.exports = controller;

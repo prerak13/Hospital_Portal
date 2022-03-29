@@ -1,12 +1,13 @@
-export const USER_LOGIN_REQUEST = "USER_LOGIN_REQUEST";
-export const USER_LOGIN_SUCCESS = "USER_LOGIN_SUCCESS";
-export const USER_LOGIN_DECLINE = "USER_LOGIN_DECLINE";
-export const USER_LOGOUT_SUCCESS = "USER_LOGOUT_SUCCESS";
+export const register_request = "register_request";
+export const registered = "registered";
+export const register_fail = "register_fail";
+export const login_request = "login_request";
+export const login_success = "login_success";
+export const login_fail = "login_fail";
+export const logout_success = "logout_success";
+export const update_request = "update_request";
+export const update_success = "update_success";
+export const update_failed = "update_failed";
 
-export const USER_REGISTER_REQUEST = "USER_REGISTER_REQUEST";
-export const USER_REGISTER_SUCCESS = "USER_REGISTER_SUCCESS";
-export const USER_REGISTER_DECLINE = "USER_REGISTER_DECLINE";
 
-export const USER_UPDATE_REQUEST = "USER_UPDATE_REQUEST";
-export const USER_UPDATE_SUCCESS = "USER_UPDATE_SUCCESS";
-export const USER_UPDATE_DECLINE = "USER_UPDATE_DECLINE";
+

@@ -1,25 +1,15 @@
-import {
-  USER_LOGIN_DECLINE,
-  USER_LOGIN_REQUEST,
-  USER_LOGIN_SUCCESS,
-  USER_LOGOUT_SUCCESS,
-  USER_REGISTER_DECLINE,
-  USER_REGISTER_REQUEST,
-  USER_REGISTER_SUCCESS,
-  USER_UPDATE_DECLINE,
-  USER_UPDATE_REQUEST,
-  USER_UPDATE_SUCCESS,
-} from "../Constants/userConstants";
+import {login_fail,login_request,login_success,logout_success,register_fail,register_request,registered,
+  update_failed,update_request,update_success} from "../Constants/userConstants";
 
 export const userLoginReducer = (state = {}, action) => {
   switch (action.type) {
-    case USER_LOGIN_REQUEST:
+    case login_request:
       return { loading: true };
-    case USER_LOGIN_SUCCESS:
-      return { loading: false, userInfo: action.payload };
-    case USER_LOGIN_DECLINE:
+    case login_fail:
       return { loading: false, error: action.payload };
-    case USER_LOGOUT_SUCCESS:
+    case login_success:
+      return { loading: false, userInfo: action.payload };
+    case logout_success:
       return {};
     default:
       return state;
@@ -28,12 +18,12 @@ export const userLoginReducer = (state = {}, action) => {
 
 export const userRegisterReducer = (state = {}, action) => {
   switch (action.type) {
-    case USER_REGISTER_REQUEST:
+    case register_request:
       return { loading: true };
-    case USER_REGISTER_SUCCESS:
-      return { loading: false, userInfo: action.payload };
-    case USER_REGISTER_DECLINE:
+    case register_fail:
       return { loading: false, error: action.payload };
+    case registered:
+      return { loading: false, userInfo: action.payload };
     default:
       return state;
   }
@@ -41,12 +31,12 @@ export const userRegisterReducer = (state = {}, action) => {
 
 export const userUpdateReducer = (state = {}, action) => {
   switch (action.type) {
-    case USER_UPDATE_REQUEST:
+    case update_request:
       return { loading: true };
-    case USER_UPDATE_SUCCESS:
+    case update_failed:
+        return { loading: false, error: action.payload, success: false };
+    case update_success:
       return { loading: false, userInfo: action.payload, success: true };
-    case USER_UPDATE_DECLINE:
-      return { loading: false, error: action.payload, success: false };
     default:
       return state;
   }

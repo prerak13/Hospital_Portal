@@ -7,9 +7,9 @@ const Footer = () => {
       style={{
         marginTop: "1rem",
         padding: "1rem",
-        backgroundColor: "rgb(235, 195, 64)",
+        backgroundColor: "#008080",
         position: "absolute",
-        marginBottom: "0px",
+        marginBottom: "0",
         left: "0",
         width: "100%"
       }}
@@ -17,23 +17,23 @@ const Footer = () => {
       <Container>
         <Row>
         <Col>
-            <Row className="text-primary">About Us</Row>
-            <Row>We are emrging healthcare solutions</Row>
-            <Row>proving project. Our mission</Row>
-            <Row>is to ensure that technology changes</Row>
-            <Row>healthcare sector</Row>
+            <Row className="text-light">About Us</Row>
+            <Row className="text-light">We are emerging healthcare solutions</Row>
+            <Row className="text-light">proving project. Our mission</Row>
+            <Row className="text-light">is to ensure that technology changes</Row>
+            <Row className="text-light">healthcare sector</Row>
           </Col>
           <Col className="ml-2">
-            <Row className="text-primary">Contact Us</Row>
-            <Row>Mobile: +1(903)322442</Row>
-            <Row>Landline: (206)23135453</Row>
-            <Row>Email: wecaresolutiona@gmail.com</Row>
+            <Row className="text-light">Contact Us</Row>
+            <Row className="text-light">Mobile: +1(903)322442</Row>
+            <Row className="text-light">Landline: (206)23135453</Row>
+            <Row className="text-light">Email: wecaresolutiona@gmail.com</Row>
           </Col>
           <Col className="text-left">
-          <Row className="text-primary">Address</Row>
-            <Row>6299 South St</Row>
-            <Row>Halifax, Nova Scotia</Row>
-            <Row>B3H 4R2</Row>
+          <Row className="text-light">Address</Row>
+            <Row className="text-light">6299 South St</Row>
+            <Row className="text-light">Halifax, Nova Scotia</Row>
+            <Row className="text-light">B3H 4R2</Row>
           </Col>
         </Row>
       </Container>

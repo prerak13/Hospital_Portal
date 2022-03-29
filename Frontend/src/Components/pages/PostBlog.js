@@ -85,7 +85,6 @@ const PostBlog = () => {
                         </Col>
                     </Row>
                 </div>
-                <Footer />
             </MainScreen>
         );
     };

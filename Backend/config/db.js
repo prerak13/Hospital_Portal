@@ -1,6 +1,6 @@
 //Connection file to mongo db
-import mongoose from "mongoose";
 import colors from "colors";
+import mongoose from "mongoose";
 
 const uri = "mongodb+srv://csci5408:Mtvroadies%4028@cluster1.uotao.mongodb.net/WeCare"
 const connectDB = async () => {

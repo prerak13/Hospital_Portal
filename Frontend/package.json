@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "proxy": "http://127.0.0.1:5001/",
+  "proxy": "http://127.0.0.1:5000/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,6 +16,7 @@
     "react-chartjs-2": "^4.0.1",
     "react-datepicker": "^4.7.0",
     "react-dom": "^17.0.1",
+    "react-fontawesome": "^1.7.1",
     "react-markdown": "^6.0.1",
     "react-redux": "^7.2.6",
     "react-router-dom": "^5.3.0",
@@ -51,7 +52,6 @@
     ]
   },
   "main": "index.js",
-  "devDependencies": {},
   "keywords": [],
   "author": "",
   "license": "ISC",

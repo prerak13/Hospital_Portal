@@ -1,8 +1,8 @@
 import express from "express";
-import dotenv from "dotenv";
-import connectDB from "./config/db.js";
-import colors from "colors";
 import path from "path";
+import colors from "colors";
+import connectDB from "./config/db.js";
+import dotenv from "dotenv";
 import blogRoutes from "./routes/blogRoute.js";
 import cors from "cors";
 import userRoutes from "./routes/userRoutes.js";
@@ -12,7 +12,6 @@ import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 
 import userDashboardRoutes from "./routes/userDashboardRoutes.js";
 dotenv.config();
-
 connectDB();
 
 const app = express(); // main thing
@@ -31,9 +30,8 @@ app.use("/api/docappointment", docAppointmentRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/normalDash/", userDashboardRoutes);
 
-// --------------------------deployment------------------------------
 const __dirname = path.resolve();
-
+//deploying app
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/Frontend/build")));
 
@@ -42,21 +40,18 @@ if (process.env.NODE_ENV === "production") {
   );
 } else {
   app.get("/", (req, res) => {
-    res.send("API is running..");
+    res.send("Data is fetched! run frontend");
   });
 }
-// --------------------------deployment------------------------------
 
-// Error Handling middlewares
-
-
-
-const PORT = process.env.PORT || 5001;
+app.use(notFound);
+app.use(errorHandler);
+const PORT = process.env.PORT || 5000;
 
 app.listen(
   PORT,
   console.log(
-    `Server running in ${process.env.NODE_ENV} mode on port ${PORT}..`.yellow
+    `Backend initiated in ${process.env.NODE_ENV} mode on port ${PORT}..`.yellow
       .bold
   )
 );

@@ -1,13 +1,13 @@
 import React from "react";
-import { Container, Row } from "react-bootstrap";
 import "./Screen.css";
+import { Row,Container } from "react-bootstrap";
 
 function MainScreen({ children, title }) {
   return (
-    <div className="mainback">
+    <div className="showscreen">
       <Container>
         <Row>
-          <div className="page">
+          <div className="design">
             {title && (
               <>
                 <h1 className="heading">{title}</h1>

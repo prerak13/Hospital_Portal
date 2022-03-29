@@ -1,20 +1,40 @@
-import {
-  USER_LOGIN_DECLINE,
-  USER_LOGIN_REQUEST,
-  USER_LOGIN_SUCCESS,
-  USER_LOGOUT_SUCCESS,
-  USER_REGISTER_DECLINE,
-  USER_REGISTER_REQUEST,
-  USER_REGISTER_SUCCESS,
-  USER_UPDATE_DECLINE,
-  USER_UPDATE_REQUEST,
-  USER_UPDATE_SUCCESS,
-} from "../Constants/userConstants";
 import axios from "axios";
+import { login_fail, login_request,login_success,logout_success,register_fail,register_request,
+  registered,update_failed,update_request,update_success,} from "../Constants/userConstants";
 
+//register api
+export const register = (name, email, ispatient, password) => async (dispatch) => {
+  try {
+    dispatch({ type: register_request });
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+      },
+    };
+    const { data } = await axios.post(
+      "/api/users",
+      { name, email, ispatient, password },
+      config
+    );
+
+    dispatch({ type: registered, payload: data });
+    dispatch({ type: login_success, payload: data });
+    localStorage.setItem("userInfo", JSON.stringify(data));
+  } catch (error) {
+    dispatch({
+      type: register_fail,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+//login api
 export const login = (email, password) => async (dispatch) => {
   try {
-    dispatch({ type: USER_LOGIN_REQUEST });
+    dispatch({ type: login_request });
 
     const config = {
       headers: {
@@ -28,12 +48,12 @@ export const login = (email, password) => async (dispatch) => {
       config
     );
 
-    dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
+    dispatch({ type: login_success, payload: data });
 
     localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
     dispatch({
-      type: USER_LOGIN_DECLINE,
+      type: login_fail,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
@@ -44,43 +64,13 @@ export const login = (email, password) => async (dispatch) => {
 
 export const logout = () => async (dispatch) => {
   localStorage.removeItem("userInfo");
-  dispatch({ type: USER_LOGOUT_SUCCESS });
+  dispatch({ type: logout_success });
 };
 
-export const register = (name, email, ispatient, password, pic) => async (dispatch) => {
-  try {
-    dispatch({ type: USER_REGISTER_REQUEST });
-    const config = {
-      headers: {
-        "Content-type": "application/json",
-      },
-    };
-
-    const { data } = await axios.post(
-      "/api/users",
-      { name, pic, email, ispatient, password },
-      config
-    );
-
-    dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
-
-    dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
-
-    localStorage.setItem("userInfo", JSON.stringify(data));
-  } catch (error) {
-    dispatch({
-      type: USER_REGISTER_DECLINE,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
-  }
-};
-
+//profile api
 export const updateProfile = (user) => async (dispatch, getState) => {
   try {
-    dispatch({ type: USER_UPDATE_REQUEST });
+    dispatch({ type: update_request });
 
     const {
       userLogin: { userInfo },
@@ -95,14 +85,14 @@ export const updateProfile = (user) => async (dispatch, getState) => {
 
     const { data } = await axios.post("/api/users/profile", user, config);
 
-    dispatch({ type: USER_UPDATE_SUCCESS, payload: data });
+    dispatch({ type: update_success, payload: data });
 
-    dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
+    dispatch({ type: login_success, payload: data });
 
     localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
     dispatch({
-      type: USER_UPDATE_DECLINE,
+      type: update_failed,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
