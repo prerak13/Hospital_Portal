@@ -14,11 +14,7 @@ import {
   ArcElement,
 } from "chart.js";
 import { Bar, Line, Pie } from "react-chartjs-2";
-import {
-  appointmentPerMonth,
-  employeeCountByDepartment,
-  vaccineData,
-} from "./data";
+import { vaccineData } from "./data";
 
 const axios = require("axios").default;
 ChartJS.register(
@@ -33,27 +29,6 @@ ChartJS.register(
   BarElement
 );
 
-const appointmentChartOptions = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "top",
-    },
-  },
-};
-
-const apointmentBookdata = {
-  labels: appointmentPerMonth.map((x) => x.month),
-  datasets: [
-    {
-      label: "Total appointment booked",
-      data: appointmentPerMonth.map((x) => x.count),
-      borderColor: "rgb(255, 99, 132)",
-      backgroundColor: "rgba(255, 99, 132, 0.5)",
-    },
-  ],
-};
-
 const vaccineChartOptions = {
   responsive: true,
   plugins: {
@@ -63,24 +38,23 @@ const vaccineChartOptions = {
   },
 };
 
-const vaccineBookdata = {
-  labels: vaccineData.map((x) => x.month),
-  datasets: [
-    {
-      label: "Total Vaccination",
-      data: vaccineData.map((x) => x.count),
-      borderColor: "rgb(255, 99, 132)",
-      backgroundColor: "rgba(255, 99, 132, 0.5)",
-    },
-  ],
-};
-
 const AdminDashboard = () => {
   const [empCountGender, setEmpCountGender] = useState({}); //done
   const [empCountDept, setEmpCountDept] = useState({}); //done
   const [appointmentMonthly, setAppointmentMonthly] = useState({});
   const [empCountWork, setEmpCountWork] = useState({}); //done
 
+  const vaccineBookdata = {
+    labels: appointmentMonthly.map((x) => x.month),
+    datasets: [
+      {
+        label: "Total Vaccination",
+        data: appointmentMonthly.map((x) => x.count),
+        borderColor: "rgb(255, 99, 132)",
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
+      },
+    ],
+  };
   useEffect(() => {
     axios.get("/api/dashboard/getEmployeeByDepartment/").then((res) => {
       const females = res.data.females;
@@ -127,17 +101,18 @@ const AdminDashboard = () => {
   }, []);
   const chartOptions = {};
   const chartData = {
-    labels: employeeCountByDepartment.map((x) => x.department),
+    labels: Object.keys(empCountDept),
+
     datasets: [
       {
-        label: "Full-Time",
-        data: employeeCountByDepartment.map((x) => x.fullTime),
+        label: "Male",
+        data: Object.keys(empCountDept).map((x) => empCountDept[x].male),
         borderColor: "rgb(53, 162, 235)",
         backgroundColor: "rgba(53, 162, 235, 0.4)",
       },
       {
-        label: "Part-Time",
-        data: employeeCountByDepartment.map((x) => x.partTime),
+        label: "Female",
+        data: Object.keys(empCountDept).map((x) => empCountDept[x].female),
         borderColor: "rgba()",
         backgroundColor: "rgba(11, 162, 1, 0.4)",
       },
@@ -169,8 +144,34 @@ const AdminDashboard = () => {
       },
     ],
   };
-  console.log(1, empCountDept);
-  console.log(2, employeeCountByDepartment);
+
+  const empWorkStyle = {
+    labels: empCountWork.map && (empCountWork.map((x) => x._id) || "No Value"),
+    datasets: [
+      {
+        data: empCountWork.map && empCountWork.map((x) => x.count),
+        backgroundColor: [
+          "rgba(255, 99, 132, 0.2)",
+          "rgba(54, 162, 235, 0.2)",
+          "rgba(255, 206, 86, 0.2)",
+          "rgba(75, 192, 192, 0.2)",
+          "rgba(153, 102, 255, 0.2)",
+          "rgba(255, 159, 64, 0.2)",
+        ],
+        borderColor: [
+          "rgba(255, 99, 132, 1)",
+          "rgba(54, 162, 235, 1)",
+          "rgba(255, 206, 86, 1)",
+          "rgba(75, 192, 192, 1)",
+          "rgba(153, 102, 255, 1)",
+          "rgba(255, 159, 64, 1)",
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
+  console.log(1, empCountGender);
+  console.log(2, appointmentMonthly);
 
   return (
     <Container>
@@ -213,17 +214,15 @@ const AdminDashboard = () => {
         <Col lg="6" style={{ border: "1px solid" }}>
           <Row>
             <Col>
-              <h5 className="text-center">
-                Total Appointments Booked per month
-              </h5>
+              <h5 className="text-center">Employees Working Status</h5>
             </Col>
           </Row>
 
           <Row>
-            <Col>
-              <Line
-                options={appointmentChartOptions}
-                data={apointmentBookdata}
+            <Col style={{ height: "40vh" }}>
+              <Pie
+                options={{ maintainAspectRatio: false }}
+                data={empWorkStyle}
               />
             </Col>
           </Row>
