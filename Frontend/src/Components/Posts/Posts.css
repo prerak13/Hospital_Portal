@@ -1,10 +1,7 @@
-body {
-	background-color: #dee8ea;
-}
 .posts-container {
-	display: flex;
-    flex-direction: column;
-	/* justify-content: center; */
-    justify-content: space-around;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  justify-content: space-around;
+  align-items: center;
 }

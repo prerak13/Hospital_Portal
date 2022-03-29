@@ -6,7 +6,7 @@ import {
   Nav,
   Navbar,
   NavDropdown,
-  NavLink,  
+  NavLink,
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {} from "react-router-dom";
@@ -27,36 +27,52 @@ function Header({ setSearch }) {
   return (
     <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
       <Container>
-        <Navbar.Brand href="/"><h4 className="my-0">WeCare Solutions</h4></Navbar.Brand>
+        <Navbar.Brand href="/">
+          <h4 className="my-0">WeCare Solutions</h4>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="m-auto">
-          <Nav.Link >Book appointments</Nav.Link>
-            {userInfo && (
-              <Form inline>
-                <FormControl
-                  type="text"
-                  placeholder="Search"
-                  className="mr-sm-2"
-                  onChange={(e) => setSearch(e.target.value)}
-                />
-              </Form>
-            )}
-          </Nav>
+          <Nav className="m-auto"></Nav>
+
+          {userInfo && (
+            <Form inline>
+              <FormControl
+                type="text"
+                placeholder="Search"
+                className="mr-sm-2"
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            </Form>
+          )}
+
           <Nav>
-          <Nav.Link href='https://www.google.com' activeStyle>
-                        Careers
-                    </Nav.Link>
+            <Nav.Link href="https://www.google.com" activeStyle>
+              Careers
+            </Nav.Link>
           </Nav>
+
+          {userInfo ? (
+            <Nav>
+              <NavDropdown title="Appointments">
+                <NavDropdown.Item href="/appointment">
+                  Book Appointments
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/viewappointment">
+                  View Appointments
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+          ) : (
+            ""
+          )}
           <Nav>
-          <Nav.Link href='/Blogs' activeStyle>
-                        Blogs
-                    </Nav.Link>
+            <Nav.Link href="/Blogs" activeStyle>
+              Blogs
+            </Nav.Link>
           </Nav>
           <Nav>
             {userInfo ? (
               <>
-              
                 <NavDropdown
                   title={`${userInfo.name}`}
                   id="collasible-nav-dropdown"
@@ -73,7 +89,6 @@ function Header({ setSearch }) {
               </>
             ) : (
               <Nav.Link href="/login">Login</Nav.Link>
-
             )}
           </Nav>
         </Navbar.Collapse>
