@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-
+import { useSelector } from "react-redux";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -38,12 +38,18 @@ const vaccineChartOptions = {
   },
 };
 
-const AdminDashboard = () => {
+const AdminDashboard = ({ history }) => {
   const [empCountGender, setEmpCountGender] = useState([]); //done
   const [empCountDept, setEmpCountDept] = useState([]); //done
   const [appointmentMonthly, setAppointmentMonthly] = useState([]);
   const [empCountWork, setEmpCountWork] = useState([]); //done
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  if (!userInfo) {
+    history.push("/login");
+  }
   const vaccineBookdata = {
     labels: appointmentMonthly.map((x) => x.month),
     datasets: [

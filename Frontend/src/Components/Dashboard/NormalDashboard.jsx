@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-
 import { Col, Container, Row, Table } from "react-bootstrap";
-import { upcommingAppointments, reports } from "./data";
-
 import axios from "axios";
 
 class NormalDashboard extends Component {
@@ -12,6 +9,13 @@ class NormalDashboard extends Component {
   };
 
   componentDidMount() {
+    setTimeout(() => {
+      const userInfo = localStorage.getItem("userInfo");
+      if (!userInfo) {
+        this.props.history.push("/login");
+      }
+    }, 2000);
+
     axios.get(`/api/normalDash/getAppointments`).then((res) => {
       const appointments = res.data;
       this.setState({ appointments });
