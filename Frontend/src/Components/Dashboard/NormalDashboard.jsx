@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Col, Container, Row, Table } from "react-bootstrap";
 import axios from "axios";
-
 class NormalDashboard extends Component {
   state = {
     appointments: [],
@@ -15,19 +14,23 @@ class NormalDashboard extends Component {
         this.props.history.push("/login");
       }
     }, 2000);
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
-    axios.get(`/api/normalDash/getAppointments`).then((res) => {
-      const appointments = res.data;
-      this.setState({ appointments });
-    });
+    axios
+      .get(`/api/normalDash/getAppointments?email=${userInfo.email}`)
+      .then((res) => {
+        const appointments = res.data;
+        this.setState({ appointments });
+      });
 
-    axios.get(`/api/normalDash/getReports`).then((res) => {
-      const reports = res.data;
-      this.setState({ reports });
-    });
+    axios
+      .get(`/api/normalDash/getReports?email=${userInfo.email}`)
+      .then((res) => {
+        const reports = res.data;
+        this.setState({ reports });
+      });
   }
   render() {
-    console.log(this.state.reports);
     return (
       <Container>
         <Row>
@@ -98,7 +101,7 @@ class NormalDashboard extends Component {
                           <td style={{ padding: "15px" }}>{i + 1}</td>
                           <td style={{ padding: "15px" }}>{x.date}</td>
                           <td style={{ padding: "15px" }}>{x.testType}</td>
-                          <td style={{ padding: "15px" }}>{x.status}</td>
+                          <td style={{ padding: "15px" }}>{x.email}</td>
                           <td style={{ padding: "15px" }}>
                             <a
                               href={x.docURI}
