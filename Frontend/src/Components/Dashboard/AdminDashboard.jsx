@@ -39,10 +39,10 @@ const vaccineChartOptions = {
 };
 
 const AdminDashboard = () => {
-  const [empCountGender, setEmpCountGender] = useState({}); //done
-  const [empCountDept, setEmpCountDept] = useState({}); //done
-  const [appointmentMonthly, setAppointmentMonthly] = useState({});
-  const [empCountWork, setEmpCountWork] = useState({}); //done
+  const [empCountGender, setEmpCountGender] = useState([]); //done
+  const [empCountDept, setEmpCountDept] = useState([]); //done
+  const [appointmentMonthly, setAppointmentMonthly] = useState([]);
+  const [empCountWork, setEmpCountWork] = useState([]); //done
 
   const vaccineBookdata = {
     labels: appointmentMonthly.map((x) => x.month),
