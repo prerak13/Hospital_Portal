@@ -1,3 +1,7 @@
+/**
+ * @author Vishal Rakesh Jaiswal
+ * @email vs928999@dal.ca
+ */
 import React from "react";
 import "./Post.css";
 const Post = ({ post: { title, description,

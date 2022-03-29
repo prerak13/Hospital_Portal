@@ -1,3 +1,7 @@
+/**
+ * @author Vishal Rakesh Jaiswal
+ * @email vs928999@dal.ca
+ */
 import React, { useState, useEffect } from "react";
 import Posts from "../Posts/Posts";
 
