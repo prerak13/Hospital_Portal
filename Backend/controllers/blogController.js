@@ -1,3 +1,7 @@
+/**
+ * @author Vishal Rakesh Jaiswal
+ * @email vs928999@dal.ca
+ */
 import Blog from "../models/blogModel.js";
 const addBlog = async (req, res) => {
     var blogData = new Blog(req.body);

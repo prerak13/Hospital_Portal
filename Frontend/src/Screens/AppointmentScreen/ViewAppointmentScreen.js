@@ -1,3 +1,8 @@
+/**
+ * @author Harivansh Bhatia
+ * @email hr513288@dal.ca
+ */
+
 import MainScreen from "../../Components/MainScreen";
 import Footer from "../../Components/Footer";
 import React, { useState, useEffect } from "react";
@@ -40,36 +45,41 @@ function ViewAppointmentScreen() {
 
   return (
     <MainScreen title="View Appointment ">
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Appointment Booked with Doctor</th>
-            <th>Appointment Time</th>
-            <th>Appointment Date</th>
-            <th>Special Instruction</th>
-            <th>Reschedule/Cancel</th>
-          </tr>
-        </thead>
-        <tbody>
-          {appointmentData.map((data) => (
-            <tr key={data._id}>
-              <td>{data.patientName}</td>
-              <td>{data.docSelected}</td>
-              <td>{data.selectedTime}</td>
-              <td>{data.selectedDate}</td>
-              <td>{data.specialInstruction}</td>
-              <td>
-                <Button onClick={() => handleReschedule(data)}>
-                  Reschedule
-                </Button>
-                <Button onClick={() => handleDelete(data._id)}>Cancel</Button>
-              </td>
+      {appointmentData.length > 0 ? (
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Appointment Booked with Doctor</th>
+              <th>Appointment Time</th>
+              <th>Appointment Date</th>
+              <th>Special Instruction</th>
+              <th>Reschedule/Cancel</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
-      <Footer></Footer>
+          </thead>
+          <tbody>
+            {appointmentData.map((data) => (
+              <tr key={data._id}>
+                <td>{data.patientName}</td>
+                <td>{data.docSelected}</td>
+                <td>{data.selectedTime}</td>
+                <td>{data.selectedDate}</td>
+                <td>{data.specialInstruction}</td>
+                <td>
+                  <Button onClick={() => handleReschedule(data)}>
+                    Reschedule
+                  </Button>
+                  <Button onClick={() => handleDelete(data._id)}>Cancel</Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      ) : (
+        <h2 className="heading font-weight-bold text-center ">
+          You have no appointments...
+        </h2>
+      )}
     </MainScreen>
   );
 }

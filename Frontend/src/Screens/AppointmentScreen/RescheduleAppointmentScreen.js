@@ -1,3 +1,8 @@
+/**
+ * @author Harivansh Bhatia
+ * @email hr513288@dal.ca
+ */
+
 import React, { useState, useEffect } from "react";
 import MainScreen from "../../Components/MainScreen";
 import Footer from "../../Components/Footer";
