@@ -2,8 +2,28 @@ import React, { Component } from "react";
 
 import { Col, Container, Row, Table } from "react-bootstrap";
 import { upcommingAppointments, reports } from "./data";
+
+import axios from "axios";
+
 class NormalDashboard extends Component {
+  state = {
+    appointments: [],
+    reports: [],
+  };
+
+  componentDidMount() {
+    axios.get(`/api/normalDash/getAppointments`).then((res) => {
+      const appointments = res.data;
+      this.setState({ appointments });
+    });
+
+    axios.get(`/api/normalDash/getReports`).then((res) => {
+      const reports = res.data;
+      this.setState({ reports });
+    });
+  }
   render() {
+    console.log(this.state.reports);
     return (
       <Container>
         <Row>
@@ -16,41 +36,45 @@ class NormalDashboard extends Component {
           <Col>
             <h4 className="text-center">Upcomming Appointments</h4>
           </Col>
-          <Col>
-            <h4 className="text-center">Pathalogy Reports</h4>
-          </Col>
         </Row>
 
         <Row>
-          <Col>
+          <div className="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-sm-12">
             <Table striped bordered hover responsive>
               <thead>
                 <tr>
                   <th>S.No.</th>
                   <th>Date</th>
-                  <th>Time</th>
-                  <th>Location</th>
-                  <th>Add To Calender</th>
+                  <th>Doctor</th>
+                  <th>Special Instructions</th>
                 </tr>
               </thead>
               <tbody>
-                {upcommingAppointments.map((x, i) => {
+                {this.state.appointments.map((x, i) => {
                   return (
                     <>
                       <tr>
                         <td style={{ padding: "15px" }}>{i + 1}</td>
-                        <td style={{ padding: "15px" }}>{x.Date}</td>
-                        <td style={{ padding: "15px" }}>{x.Location}</td>
-                        <td style={{ padding: "15px" }}>{x.Time}</td>
-                        <td style={{ padding: "15px" }}>Add to calander</td>
+                        <td style={{ padding: "15px" }}>{x.selectedDate}</td>
+                        <td style={{ padding: "15px" }}>{x.docSelected}</td>
+                        <td style={{ padding: "15px" }}>
+                          {x.specialInstruction}
+                        </td>
                       </tr>
                     </>
                   );
                 })}
               </tbody>
             </Table>
-          </Col>
+          </div>
+        </Row>
+        <Row>
           <Col>
+            <h4 className="text-center">Pathalogy Reports</h4>
+          </Col>
+        </Row>
+        <Row>
+          <div className="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-sm-12">
             <Col>
               <Table striped bordered hover responsive>
                 <thead>
@@ -63,15 +87,23 @@ class NormalDashboard extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {reports.map((x, i) => {
+                  {this.state.reports.map((x, i) => {
                     return (
                       <>
                         <tr>
                           <td style={{ padding: "15px" }}>{i + 1}</td>
-                          <td style={{ padding: "15px" }}>{x.Date}</td>
-                          <td style={{ padding: "15px" }}>{x.Test}</td>
-                          <td style={{ padding: "15px" }}>{x.Status}</td>
-                          <td style={{ padding: "15px" }}>View</td>
+                          <td style={{ padding: "15px" }}>{x.date}</td>
+                          <td style={{ padding: "15px" }}>{x.testType}</td>
+                          <td style={{ padding: "15px" }}>{x.status}</td>
+                          <td style={{ padding: "15px" }}>
+                            <a
+                              href={x.docURI}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              VIEW REPORT
+                            </a>
+                          </td>
                         </tr>
                       </>
                     );
@@ -79,7 +111,7 @@ class NormalDashboard extends Component {
                 </tbody>
               </Table>
             </Col>
-          </Col>
+          </div>
         </Row>
       </Container>
     );

@@ -28,10 +28,10 @@ function Header({ setSearch }) {
     <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
       <Container>
         <Navbar.Brand href="/"><h4 className="my-0">WeCare Solutions</h4></Navbar.Brand>
-
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="m-auto">
+          <Nav.Link >Book appointments</Nav.Link>
             {userInfo && (
               <Form inline>
                 <FormControl

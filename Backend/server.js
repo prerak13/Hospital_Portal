@@ -6,8 +6,11 @@ import path from "path";
 import blogRoutes from "./routes/blogRoute.js";
 import cors from "cors";
 import userRoutes from "./routes/userRoutes.js";
+import docAppointmentRoutes from "./routes/docAppointmentRoutes.js";
+import dashboardRoutes from "./routes/dashboardRoutes.js";
 import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 
+import userDashboardRoutes from "./routes/userDashboardRoutes.js";
 dotenv.config();
 
 connectDB();
@@ -24,6 +27,9 @@ app.use(cors(corsOptions));
 app.use("/api/users", userRoutes);
 app.use(errorHandler);
 app.use("/api/blog", blogRoutes);
+app.use("/api/docappointment", docAppointmentRoutes);
+app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/normalDash/", userDashboardRoutes);
 
 // --------------------------deployment------------------------------
 const __dirname = path.resolve();
@@ -45,7 +51,7 @@ if (process.env.NODE_ENV === "production") {
 
 
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 app.listen(
   PORT,

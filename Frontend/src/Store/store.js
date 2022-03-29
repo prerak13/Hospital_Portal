@@ -39,6 +39,7 @@ export const postBlog = async (data) => {
         }
     ).then(res => {
         console.log(res);
+        return res;
     }
     ).catch(e => {
         console.log(e);
