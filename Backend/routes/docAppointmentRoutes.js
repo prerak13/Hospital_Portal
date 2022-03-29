@@ -1,3 +1,8 @@
+/**
+ * @author Harivansh Bhatia
+ * @email hr513288@dal.ca
+ */
+
 import express from "express";
 import {
   bookAppointment,
