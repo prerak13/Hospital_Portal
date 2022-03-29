@@ -3,7 +3,8 @@ import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import colors from "colors";
 import path from "path";
-
+import blogRoutes from "./routes/blogRoute.js";
+import cors from "cors";
 import userRoutes from "./routes/userRoutes.js";
 import docAppointmentRoutes from "./routes/docAppointmentRoutes.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
@@ -15,10 +16,17 @@ dotenv.config();
 connectDB();
 
 const app = express(); // main thing
-
+const corsOptions={
+  origin:'*',
+  credentials:true,
+  optionSuccessStatus:200,
+}
 app.use(express.json()); // to accept json data
+app.use(cors(corsOptions));
 
 app.use("/api/users", userRoutes);
+app.use(errorHandler);
+app.use("/api/blog", blogRoutes);
 app.use("/api/docappointment", docAppointmentRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/normalDash/", userDashboardRoutes);
@@ -40,8 +48,8 @@ if (process.env.NODE_ENV === "production") {
 // --------------------------deployment------------------------------
 
 // Error Handling middlewares
-app.use(notFound);
-app.use(errorHandler);
+
+
 
 const PORT = process.env.PORT || 5001;
 
