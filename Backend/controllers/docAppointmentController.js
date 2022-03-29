@@ -1,3 +1,8 @@
+/**
+ * @author Harivansh Bhatia
+ * @email hr513288@dal.ca
+ */
+
 import AppointmentSchemaModel from "../models/appointmentBookingModel.js";
 
 const bookAppointment = async (req, res) => {
