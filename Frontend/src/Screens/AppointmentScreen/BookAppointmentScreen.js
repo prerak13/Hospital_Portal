@@ -5,7 +5,6 @@
 
 import React, { useState, useEffect } from "react";
 import MainScreen from "../../Components/MainScreen";
-import Footer from "../../Components/Footer";
 import { Form, Row, Col, Container } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -173,7 +172,6 @@ function BookAppointmentScreen() {
           </Row>
         </Container>
       </div>
-      <Footer />
     </MainScreen>
   );
 }
