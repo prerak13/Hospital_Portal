@@ -1,3 +1,7 @@
+/**
+ * @author Vishal Rakesh Jaiswal
+ * @email vs928999@dal.ca
+ */
 import mongoose from "mongoose";
 
 const blogSchema = mongoose.Schema(

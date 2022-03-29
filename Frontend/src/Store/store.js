@@ -1,3 +1,7 @@
+/**
+ * @author Vishal Rakesh Jaiswal
+ * @email vs928999@dal.ca
+ */
 import axios from "axios";
 export const login = async (email, password) => {
   try {
