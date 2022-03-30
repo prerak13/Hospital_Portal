@@ -30,3 +30,4 @@ const pSchema = mongoose.Schema({
 const PModel = mongoose.model("path_datas", pSchema);
 
 export default PModel;
+    

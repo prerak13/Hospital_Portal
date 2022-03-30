@@ -22,6 +22,8 @@ import BookAppointmentScreen from "./Screens/AppointmentScreen/BookAppointmentSc
 import ViewAppointmentScreen from "./Screens/AppointmentScreen/ViewAppointmentScreen";
 import RescheduleAppointmentScreen from "./Screens/AppointmentScreen/RescheduleAppointmentScreen";
 import Chatbot from "./Components/Chatbot/Chatbot";
+import LabReports from "./Screens/ViewReport/LabReports";
+import ReportUpload from "./Screens/ReportUpload/ReportUpload";
   function App() {
     const [search, setSearch] = useState("");
   return (
@@ -40,6 +42,8 @@ import Chatbot from "./Components/Chatbot/Chatbot";
         <Route path='/postblog' component={PostBlog } />
         <Route path="/appointment" component={BookAppointmentScreen} />
         <Route path="/viewappointment" component={ViewAppointmentScreen} />
+        <Route path="/viewreports" component={LabReports} />
+        <Route path="/uploadreport" component={ReportUpload}/>
         <Route
           path="/rescheduleappointment"
           component={RescheduleAppointmentScreen}

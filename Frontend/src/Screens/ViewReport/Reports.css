@@ -1,0 +1,32 @@
+.reportlist{
+    flex:4;
+    height: 450;
+    width:84%;
+    margin:40px;
+    margin-left: 90px;
+}
+.viewreports{
+    display: flex;
+    align-items: center;
+}
+.img{
+    width: 32px;
+    height: 32px;
+    border-radius: 20%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+.status {
+    font-weight: bold;
+    font-size: 0.85rem;
+    color: white;
+    background-color: orange;
+    border-radius: 70px/40px;
+    padding: 6px 6px;
+    object-fit: cover;
+    margin-left: 0px;
+    width: 90px;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
