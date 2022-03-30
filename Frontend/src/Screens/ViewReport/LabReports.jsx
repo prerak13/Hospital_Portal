@@ -12,6 +12,7 @@ function LabReports({ history }){
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  
   if (!userInfo) {
     history.push("/login");
   }
