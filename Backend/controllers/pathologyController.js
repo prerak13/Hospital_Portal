@@ -1,7 +1,7 @@
 import PModel from "../models/pathalogyModel.js";
 
 const getPathaAppointments = async (req, res) => {
-  const retur = await PModel.find();
+  const retur = await PModel.find({ patientEmail: req.query.email });
   res.json(retur);
 };
 

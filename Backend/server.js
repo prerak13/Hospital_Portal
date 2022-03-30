@@ -10,6 +10,8 @@ import docAppointmentRoutes from "./routes/docAppointmentRoutes.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
 import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 
+import pathalologyRoutes from "./routes/pathalogyRoutes.js";
+
 import userDashboardRoutes from "./routes/userDashboardRoutes.js";
 dotenv.config();
 connectDB();
@@ -29,6 +31,7 @@ app.use("/api/blog", blogRoutes);
 app.use("/api/docappointment", docAppointmentRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/normalDash/", userDashboardRoutes);
+app.use("/api/pathology/", pathalologyRoutes);
 
 const __dirname = path.resolve();
 //deploying app

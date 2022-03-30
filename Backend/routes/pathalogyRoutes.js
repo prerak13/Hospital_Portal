@@ -4,7 +4,7 @@ import {
   addPathaAppointment,
 } from "../controllers/pathologyController.js";
 const router = express.Router();
-//f
+
 router.get("/getPathaAppointment", getPathaAppointments);
 router.post("/addPathaAppointment", addPathaAppointment);
 
