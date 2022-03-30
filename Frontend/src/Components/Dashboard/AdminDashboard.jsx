@@ -235,9 +235,9 @@ const AdminDashboard = ({ history }) => {
 
         <Col style={{ border: "1px solid" }}>
           <Row>
-            <h5 className="text-center">
-              Vaccine Dose provided in a particular month
-            </h5>
+            <Col>
+              <h5 className="text-center">Vaccine Dose provided (Monthly)</h5>
+            </Col>
           </Row>
           <Row>
             <Line options={vaccineChartOptions} data={vaccineBookdata} />
