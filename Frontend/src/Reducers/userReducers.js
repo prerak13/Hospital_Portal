@@ -1,3 +1,6 @@
+//sanika -> sn820051@dal.ca
+//Use of constants to make cases, for what happens when the system gets that type of situation. 
+//Reference -> https://redux-toolkit.js.org/api/createslice
 import {login_fail,login_request,login_success,logout_success,register_fail,register_request,registered,
   update_failed,update_request,update_success} from "../Constants/userConstants";
 

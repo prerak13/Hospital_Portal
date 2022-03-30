@@ -1,8 +1,9 @@
+//sanika ->sn820051@dal.ca
 import User from "../models/userModel.js";
 import asyncHandler from "express-async-handler";
 import jwt from "jsonwebtoken";
 
-//authorization checked by token 
+//authentication checked by matching the token 
 const protect = asyncHandler(async (req, res, next) => {
   let authtoken;
   if (

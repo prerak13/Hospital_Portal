@@ -1,3 +1,5 @@
+//sanika ->sn820051@dal.ca
+//Profile page frontend, used form, userupdate state and submit handler to submit the edit profile form. 
 import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,9 +28,9 @@ const ProfileScreen = ({ location, history }) => {
       setEmail(userInfo.email);
     }
   }, [history, userInfo]);
+
     const submitHandler = (e) => {
     e.preventDefault();
-
     dispatch(updateProfile({ name, email, password }));
   };
 

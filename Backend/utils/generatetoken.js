@@ -1,3 +1,4 @@
+//sanika ->sn820051@dal.ca
 import jwt from "jsonwebtoken";
 
 const token = (id) => {

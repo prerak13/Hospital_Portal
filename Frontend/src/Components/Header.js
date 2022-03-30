@@ -1,3 +1,4 @@
+//Header component used for importing footer in all pages
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {} from "react-router-dom";
