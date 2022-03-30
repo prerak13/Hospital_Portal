@@ -1,3 +1,5 @@
+//sanika ->sn820051@dal.ca
+//Register page frontend, used form, userregister state and submit handler to submit the register form.
 import React, { useState, useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import { register } from "../../Apiactions/userapis";

@@ -1,6 +1,7 @@
+//sanika ->sn820051@dal.ca
 import bcrypt from "bcryptjs";
 import mongoose from "mongoose";
-
+//User model, defines the schema for the database and storage of the feilds we are including with their datatypes.
 const userSchema = mongoose.Schema(
   {
     name: {

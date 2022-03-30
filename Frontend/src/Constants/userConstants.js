@@ -1,3 +1,6 @@
+//sanika ->sn820051@dal.ca
+//defining constant for users, basically an easy way to categorize the authentication situation like login fail,
+//success or requested.
 export const register_request = "register_request";
 export const registered = "registered";
 export const register_fail = "register_fail";

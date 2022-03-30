@@ -1,3 +1,5 @@
+//sanika ->sn820051@dal.ca
+//Login page frontend, used form, login state and submit handler to submit the login form. 
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
