@@ -1,3 +1,8 @@
+/**
+ * @author Farhin Damania
+ * @email fr454807@dal.ca
+ */
+
 import "./Reports.css"
 import {DataGrid} from "@mui/x-data-grid";
 import { Col, Container, Row, Table } from "react-bootstrap";
@@ -16,7 +21,7 @@ function LabReports({ history }){
   if (!userInfo) {
     history.push("/login");
   }
-
+//calling the get api
   useEffect(() => {
     axios
       .get(`/api/pathology/getPathaAppointment?email=${userInfo.email}`)
@@ -26,6 +31,7 @@ function LabReports({ history }){
   }, [userInfo.email]);
 
     console.log(reports)
+    //styling the html
     return(
       <Container>
         <Row>
@@ -50,6 +56,7 @@ function LabReports({ history }){
                 </tr>
               </thead>
               <tbody >
+                {/* mapping the record entered in upload report with their mathing field and displaying it in tables */}
                 {reports.map((x, i) => {
                   return (
                     <>

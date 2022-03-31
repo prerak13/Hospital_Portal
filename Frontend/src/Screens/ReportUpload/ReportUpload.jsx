@@ -1,3 +1,7 @@
+/**
+ * @author Farhin Damania
+ * @email fr454807@dal.ca
+ */
 import { Grid, Paper, TextField } from "@material-ui/core";
 import React,{useState,useEffect} from "react";
 import "./ReportUpload.css"
@@ -17,8 +21,7 @@ import { useSelector } from "react-redux";
 
 function ReportUpload({history}){
     
-    
-
+//delcaring the constants to maintain states of object
 const [testType,settestType]=useState("");
 const [cost,setcost]=useState("");
 const [date,setdate]=useState("");
@@ -51,7 +54,7 @@ else if(comments===""){
 }
     else{
         
-    
+    //api call for post 
         axios.post("/api/pathology/addPathaAppointment",
         
             {
@@ -76,15 +79,6 @@ else if(comments===""){
 
 }
 
-
-// if (!userInfo) {
-//     history.push("/login");
-//   }
-
-  
-//   if (!userInfo.isAdmin) {
-//     history.push("/login");
-//   }
     return(
     
         <form className="form" onSubmit={handleSubmit} style={{marginTop:"10px"}}>
