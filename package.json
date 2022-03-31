@@ -9,7 +9,6 @@
     "install-client": "cd Frontend && npm install",
     "heroku-postbuild": "npm run install-client && npm run build",
     "start": "node Backend/server",
-    "server": "nodemon Backend/server",
     "client": "cd Frontend && npm start",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
