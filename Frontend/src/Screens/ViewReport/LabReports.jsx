@@ -30,16 +30,16 @@ function LabReports({ history }){
       <Container>
         <Row>
         <Col>
-          <h1 className="h1">Lab</h1>
+          <h1 className="h1">View Lab Reports </h1>
         </Col>
       </Row>
 
       <Row>
-        <div className="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-sm-12">
-          <Col>
-            <Table striped bordered hover responsive>
+        <div style={{marginLeft:"60px"}}>
+          <Col >
+            <Table striped bordered hover responsive style={{ marginTop: "30px",width:"1000px"}}>
               <thead className="head">
-                <tr>
+                <tr >
                   <th>S.No.</th>
                   <th>Date</th>
                   <th>Test</th>
@@ -49,20 +49,20 @@ function LabReports({ history }){
                   <th>View</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody >
                 {reports.map((x, i) => {
                   return (
                     <>
-                      <tr>
-                        <td style={{ padding: "15px" }}>{i + 1}</td>
-                        <td style={{ padding: "15px" }}>{x.date}</td>
-                        <td style={{ padding: "15px" }}>{x.testType}</td>
-                        <td style={{ padding: "15px" }}>{x.status}</td>
-                        <td style={{ padding: "15px" }}>{x.comments}</td>
-                        <td style={{ padding: "15px" }}>{x.cost}</td>
+                      <tr style={{paddingRight:"70px"}}>
+                        <td className="td">{i + 1}</td>
+                        <td className="td">{x.date}</td>
+                        <td className="td">{x.testType}</td>
+                        <td className="status" style={{width:"100px"}} >{x.status}</td>
+                        <td className="td">{x.comments}</td>
+                        <td className="td">{x.cost}</td>
                      
                      
-                        <td style={{ padding: "15px" }}>
+                        <td className="td">
                           <a
                             href={x.docURI}
                             target="_blank"

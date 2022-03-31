@@ -42,7 +42,20 @@ function Header({ setSearch }) {
               />
             </Form>
           )}
-
+               {userInfo ? (
+            <Nav>
+              <NavDropdown title="Lab Reports">
+                <NavDropdown.Item href="/viewreports">
+                  View Report
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/uploadreport">
+                  Upload Report
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+          ) : (
+            ""
+          )}
           <Nav>
             <Nav.Link href="http://52.90.40.218:3000/" activeStyle>
               Careers
