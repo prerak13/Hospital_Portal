@@ -30,9 +30,25 @@ const userLogin = useSelector((state) => state.userLogin);
   
 const handleSubmit=()=>{
 
-   
-    //checks
-if(false){}
+ //checking for alerts
+if(testType===""){
+  alert("Enter lab test type")
+}
+else if(cost===""){
+  alert("Enter lab test cost")
+}
+else if(date===""){
+  alert("Enter lab test date")
+}
+else if(status===""){
+  alert("Select the lab test status")
+}
+else if(docURI===""){
+  alert("Enter lab report URL")
+}
+else if(comments===""){
+  alert("Enter lab test comments")
+}
     else{
         
     
@@ -52,7 +68,7 @@ if(false){}
           
         ).then(function (res) {
             if (res.status === 200) {
-                alert(" Successfully Booked");
+                alert(" Successfully Uploaded Lab Report");
                 history.push("/viewreports");}
           })
     }
@@ -61,14 +77,14 @@ if(false){}
 }
 
 
-if (!userInfo) {
-    history.push("/login");
-  }
+// if (!userInfo) {
+//     history.push("/login");
+//   }
 
   
-  if (!userInfo.isAdmin) {
-    history.push("/login");
-  }
+//   if (!userInfo.isAdmin) {
+//     history.push("/login");
+//   }
     return(
     
         <form className="form" onSubmit={handleSubmit} style={{marginTop:"10px"}}>
@@ -95,7 +111,7 @@ if (!userInfo) {
             </Grid>
             <Grid item xs={6}>
                 <div style={{marginTop:"0px"}}>
-               <TextField required label="Please enter date of test taken" name="date" variant="filled" value={date} onChange={(e)=>setdate(e.target.value)}  className="url" size="large"/>
+               <TextField required label="2022-03-30" name="date" variant="filled" value={date} onChange={(e)=>setdate(e.target.value)}  className="url" size="large" />
                </div>
                 <div style={{marginTop:"20px"}}>
                
