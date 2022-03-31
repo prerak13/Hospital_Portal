@@ -1,3 +1,13 @@
+/**
+ * This file is controlling the status of the application.
+ * The status could be updated within the application and it would be reflected to the both ends.
+ * There are multiple constraints which are limitations like the dates and teh SOP word limit of 250
+ * Used multiple online places to learn this.
+ * URL: https://www.the-art-of-web.com/javascript/validate-date/
+ * URL: https://support.microsoft.com/en-us/office/restrict-data-input-by-using-validation-rules-b91c6b15-bcd3-42c1-90bf-e3a0272e988d
+ * URL: https://stackoverflow.com/questions/6177975/how-to-validate-date-with-format-mm-dd-yyyy-in-javascript
+ */
+
 const mongoose = require("mongoose");
 
 let schema = new mongoose.Schema(
@@ -17,13 +27,12 @@ let schema = new mongoose.Schema(
     status: {
       type: String,
       enum: [
-        "applied", // when a applicant is applied
-        "shortlisted", // when a applicant is shortlisted
-        "accepted", // when a applicant is accepted
-        "rejected", // when a applicant is rejected
-        "deleted", // when any job is deleted
-        "cancelled", // an application is cancelled by its author or when other application is accepted
-        "finished", // when job is over
+        "applied", 
+        "shortlisted", 
+        "accepted", 
+        "rejected", 
+        "deleted", 
+        "cancelled", 
       ],
       default: "applied",
       required: true,
@@ -39,7 +48,7 @@ let schema = new mongoose.Schema(
           validator: function (value) {
             return this.dateOfApplication <= value;
           },
-          msg: "dateOfJoining should be greater than dateOfApplication",
+          msg: "Invalid Dates",
         },
       ],
     },
@@ -49,7 +58,7 @@ let schema = new mongoose.Schema(
         validator: function (v) {
           return v.split(" ").filter((ele) => ele != "").length <= 250;
         },
-        msg: "Statement of purpose should not be greater than 250 words",
+        msg: "SOP more than limited words ",
       },
     },
   },
