@@ -1,8 +1,15 @@
+/**
+ * @author Prerak Choksi
+ * @email pc@dal.ca
+ */
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row, Table } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import "./NormalDashboard.css";
 const axios = require("axios").default;
+
+//User dashboard is the landing page of the application for non admin users
+//It contains information about upcoming doctor's appointments and lab tests
 
 const NormalDashboard = ({ history }) => {
   const [appointments, setAppointments] = useState([]);
@@ -11,17 +18,18 @@ const NormalDashboard = ({ history }) => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  //checking if user is logged in otherwise redirecting to the login page.
   if (!userInfo) {
     history.push("/login");
   }
-
+  //calling api for upcoming doctor's appointments. Passing the user id as a parameter
   useEffect(() => {
     axios
       .get(`/api/normalDash/getAppointments?email=${userInfo.email}`)
       .then((res) => {
         setAppointments(res.data);
       });
-
+    //calling api for upcoming reports. Passing the user id as a parameter
     axios
       .get(`/api/normalDash/getReports?email=${userInfo.email}`)
       .then((res) => {
@@ -59,12 +67,10 @@ const NormalDashboard = ({ history }) => {
                 return (
                   <>
                     <tr>
-                      <td style={{ padding: "15px" }}>{i + 1}</td>
-                      <td style={{ padding: "15px" }}>{x.selectedDate}</td>
-                      <td style={{ padding: "15px" }}>{x.docSelected}</td>
-                      <td style={{ padding: "15px" }}>
-                        {x.specialInstruction}
-                      </td>
+                      <td>{i + 1}</td>
+                      <td>{x.selectedDate}</td>
+                      <td>{x.docSelected}</td>
+                      <td>{x.specialInstruction}</td>
                     </tr>
                   </>
                 );
@@ -96,11 +102,11 @@ const NormalDashboard = ({ history }) => {
                   return (
                     <>
                       <tr>
-                        <td style={{ padding: "15px" }}>{i + 1}</td>
-                        <td style={{ padding: "15px" }}>{x.date}</td>
-                        <td style={{ padding: "15px" }}>{x.testType}</td>
-                        <td style={{ padding: "15px" }}>{x.status}</td>
-                        <td style={{ padding: "15px" }}>
+                        <td>{i + 1}</td>
+                        <td>{x.date}</td>
+                        <td>{x.testType}</td>
+                        <td>{x.status}</td>
+                        <td>
                           <a
                             href={x.docURI}
                             target="_blank"

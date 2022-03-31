@@ -1,5 +1,5 @@
 //sanika ->sn820051@dal.ca
-//this will define routes used in user secrion, / refers to the landing page 
+//this will define routes used in user secrion, / refers to the landing page
 ///login means that what application will render to login page when we will go to localhost/login
 //similarly and /profile is used for rendering profile
 import express from "express";

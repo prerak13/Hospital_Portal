@@ -1,4 +1,8 @@
 import mongoose from "mongoose";
+/**
+ * @author Prerak Choksi
+ * @email   pc@dal.ca
+ */
 
 const vaccineSchema = mongoose.Schema({
   month: {

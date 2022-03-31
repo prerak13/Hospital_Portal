@@ -1,4 +1,9 @@
-.h1 {
+/**
+ * @author Prerak Choksi
+ * @email pc@dal.ca
+ */
+ 
+ .h1 {
     text-align: center;
     text-transform: uppercase;
     color: #4CAF50;
@@ -38,4 +43,8 @@
 }
 .table1 td{
     text-align: center;
+}
+
+.td{
+ padding: "15px" ;
 }

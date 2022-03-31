@@ -1,6 +1,6 @@
 /**
- * @author Harivansh Bhatia
- * @email hr513288@dal.ca
+ * @author Prerak Choksi, Harivansh Bhatia
+ * @email   pc@dal.ca, hr513288@dal.ca
  */
 
 import mongoose from "mongoose";
