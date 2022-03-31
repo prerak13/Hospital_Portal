@@ -1,4 +1,8 @@
 import mongoose from "mongoose";
+/**
+ * @author Prerak Choksi, Vishal Jaiswal
+ * @email   pc@dal.ca, vs928999@dal.ca
+ */
 
 const empSchema = mongoose.Schema({
   firstName: {

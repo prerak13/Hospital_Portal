@@ -1,3 +1,8 @@
+/**
+ * @author Prerak Choksi, Farhin Damania
+ * @email   pc@dal.ca, fr454807@dal.ca
+ */
+
 import mongoose from "mongoose";
 
 const pSchema = mongoose.Schema({
@@ -30,4 +35,3 @@ const pSchema = mongoose.Schema({
 const PModel = mongoose.model("path_datas", pSchema);
 
 export default PModel;
-    

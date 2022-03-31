@@ -1,3 +1,7 @@
+/**
+ * @author Prerak Choksi
+ * @email pc@dal.ca
+ */
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
@@ -62,6 +66,8 @@ const AdminDashboard = ({ history }) => {
       },
     ],
   };
+  //api calls
+  //getting the count of employees by department
   useEffect(() => {
     axios.get("/api/dashboard/getEmployeeByDepartment/").then((res) => {
       const females = res.data.females;
@@ -96,20 +102,24 @@ const AdminDashboard = ({ history }) => {
       setEmpCountDept(countByDept);
     });
 
+    //getting the count of employees by gender
     axios.get("/api/dashboard/getEmployeeByGender/").then((res) => {
       setEmpCountGender(res.data);
     });
+    //getting the count of employees by working status
     axios.get("/api/dashboard/getEmployeeByWorkingStatus/").then((res) => {
       setEmpCountWork(res.data);
     });
+    //getting vaccine count
     axios.get("/api/dashboard/getVaccineDetails/").then((res) => {
       setAppointmentMonthly(res.data);
     });
   }, []);
   const chartOptions = {};
   const chartData = {
-    labels: Object.keys(empCountDept),
+    // chart.js https://react-chartjs-2.netlify.app/components/
 
+    labels: Object.keys(empCountDept),
     datasets: [
       {
         label: "Male",
@@ -156,6 +166,7 @@ const AdminDashboard = ({ history }) => {
     labels: empCountWork.map && (empCountWork.map((x) => x._id) || "No Value"),
     datasets: [
       {
+        // chart.js https://react-chartjs-2.netlify.app/components/
         data: empCountWork.map && empCountWork.map((x) => x.count),
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
