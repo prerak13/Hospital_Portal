@@ -5,10 +5,9 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "build": "cd Frontend && npm run build",
     "install-client": "cd Frontend && npm install",
     "heroku-postbuild": "npm run install-client && npm run build",
-    "start": "cd Backend && node server.js",
+    "start": "node Backend/server.js",
     "client": "cd Frontend && npm start",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
