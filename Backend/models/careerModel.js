@@ -1,3 +1,8 @@
+/**
+ * URL: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getFullYear
+ * URL: https://www.codegrepper.com/code-examples/javascript/Javascript+get+current+year
+ * URL: https://stackoverflow.com/questions/2536379/difference-in-months-between-two-dates-in-javascript
+ */
 const mongoose = require("mongoose");
 
 let schema = new mongoose.Schema(
@@ -18,7 +23,7 @@ let schema = new mongoose.Schema(
         },
         startYear: {
           type: Number,
-          min: 1930,
+          min: 1920,
           max: new Date().getFullYear(),
           required: true,
           validate: Number.isInteger,
@@ -27,12 +32,12 @@ let schema = new mongoose.Schema(
           type: Number,
           max: new Date().getFullYear(),
           validate: [
-            { validator: Number.isInteger, msg: "Year should be an integer" },
+            { validator: Number.isInteger, msg: "Input of year must be Integer" },
             {
               validator: function (value) {
                 return this.startYear <= value;
               },
-              msg: "End year should be greater than or equal to Start year",
+              msg: "Issues with the End year",
             },
           ],
         },
@@ -47,7 +52,7 @@ let schema = new mongoose.Schema(
         validator: function (v) {
           return v >= -1.0 && v <= 5.0;
         },
-        msg: "Invalid rating",
+        msg: "Rating is out of scope",
       },
     },
     resume: {

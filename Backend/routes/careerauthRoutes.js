@@ -1,3 +1,9 @@
+/**
+ * Does not reuire the last file as the direct routing had been implemented.
+ * URL: https://stackoverflow.com/questions/53915510/req-body-username-and-req-body-password-are-undefined
+ * URl: https://www.linkedin.com/pulse/building-simple-secure-api-rest-nodejs-carlos-sánchez-valdez/
+ * URL: https://www.loginradius.com/blog/engineering/hashing-user-passwords-using-bcryptjs/
+ */
 const express = require("express");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
@@ -9,33 +15,28 @@ const Recruiter = require("../db/Recruiter");
 
 const router = express.Router();
 
-router.post("/signup", (req, res) => {
-  const data = req.body;
+router.post("/sign", (req, res) => {
+  const info = req.body;
   let user = new User({
-    email: data.email,
-    password: data.password,
-    type: data.type,
+    mail: info.mail,
+    pass: info.pass,
+    type: info.type,
   });
 
   user
     .save()
     .then(() => {
       const userDetails =
-        user.type == "recruiter"
+        user.type == "reecruit"
           ? new Recruiter({
               userId: user._id,
-              name: data.name,
-              contactNumber: data.contactNumber,
-              bio: data.bio,
+              na: info.na,
+              contactNumber: info.contactNumber,
+              bio: info.bio,
             })
           : new JobApplicant({
               userId: user._id,
-              name: data.name,
-              education: data.education,
-              skills: data.skills,
-              rating: data.rating,
-              resume: data.resume,
-              profile: data.profile,
+              na: info.na,
             });
 
       userDetails
@@ -48,6 +49,7 @@ router.post("/signup", (req, res) => {
             type: user.type,
           });
         })
+        // Static try catch from stackoverflow
         .catch((err) => {
           user
             .delete()

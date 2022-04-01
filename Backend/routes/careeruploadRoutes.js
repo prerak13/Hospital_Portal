@@ -1,3 +1,7 @@
+/**
+ * Whenever the file uploaded would not be of the desired extention then there would be an error message of invalid format presented to the uploader.
+ * URL: https://stackoverflow.com/questions/60408575/how-to-validate-file-extension-with-multer-middleware
+ */
 const express = require("express");
 const multer = require("multer");
 const fs = require("fs");
@@ -25,18 +29,21 @@ router.post("/resume", upload.single("file"), (req, res) => {
     )
       .then(() => {
         res.send({
-          message: "File uploaded successfully",
+          message: "Uploaded",
           url: `/host/resume/${filename}`,
         });
       })
       .catch((err) => {
         res.status(400).json({
-          message: "Error while uploading",
+          message: "Issues Uploading the files",
         });
       });
   }
 });
-
+/**
+ * Whenever the file uploaded would not be of the desired extention then there would be an error message of invalid format presented to the uploader.
+ * URL: https://stackoverflow.com/questions/60408575/how-to-validate-file-extension-with-multer-middleware
+ */
 router.post("/profile", upload.single("file"), (req, res) => {
   const { file } = req;
   if (
@@ -55,13 +62,13 @@ router.post("/profile", upload.single("file"), (req, res) => {
     )
       .then(() => {
         res.send({
-          message: "Profile image uploaded successfully",
+          message: "Image Uploaded",
           url: `/host/profile/${filename}`,
         });
       })
       .catch((err) => {
         res.status(400).json({
-          message: "Error while uploading",
+          message: "Issues uploading Images",
         });
       });
   }
