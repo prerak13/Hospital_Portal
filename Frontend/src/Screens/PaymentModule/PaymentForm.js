@@ -30,6 +30,7 @@ function Paymentform(props)
 	},
 	);
 	console.log(payment)
+	alert("Payment done Successully")
 
 	if(error){
 		console.log("error");
