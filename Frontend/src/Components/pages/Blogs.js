@@ -13,7 +13,7 @@ const Blogs = () => {
         setUserInfo(JSON.parse(localStorage.getItem("userInfo")))
       }, [])
     if(userInfo!=null){
-    if(!userInfo.isPatient && !userInfo.isAdmin){
+    if((userInfo.isPatient==="false") && !userInfo.isAdmin){
     return (
         <div className="main-container">
             <h1 className="main-heading">
