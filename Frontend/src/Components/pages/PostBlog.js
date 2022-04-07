@@ -36,7 +36,7 @@ const PostBlog = () => {
     useEffect(() => {
         setUserInfo(JSON.parse(localStorage.getItem("userInfo")))
     }, [])
-    if (userInfo.isPatient==="false") {
+    if (userInfo.ispatient==="false") {
         return (
             <MainScreen title="BLOG PAGE">
                 <div>
