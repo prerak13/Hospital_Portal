@@ -28,7 +28,7 @@ function Header({ setSearch }) {
         <Navbar.Brand href="/">
           <h4 className="my-0">WeCare Solutions</h4>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="m-auto"></Nav>
 
@@ -74,6 +74,15 @@ function Header({ setSearch }) {
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>):""
+          ) : (
+            ""
+          )}
+               {userInfo ? (
+            <Nav>
+             <Nav.Link href="/paymentform" activeStyle>
+              Pay Online
+            </Nav.Link>
+            </Nav>
           ) : (
             ""
           )}
