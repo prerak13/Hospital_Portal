@@ -5,9 +5,11 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node Backend/server",
-    "server": "nodemon Backend/server",
-    "client": "npm start --prefix Frontend",
+    "install-client": "cd Frontend && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build",
+    "start": "node Backend/server.js",
+    "start": "cd Backend && node server.js",
+    "client": "cd Frontend && npm start",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "csci5709group",
