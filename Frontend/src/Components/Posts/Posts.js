@@ -11,6 +11,7 @@ const Posts = () => {
   const [blogPosts, setBlogPosts] = useState([]);
 
   const getData = () => {
+    debugger
     fetch("/api/blog/fetch_blog")
       .then((res) => res.json())
       .then((res) => {

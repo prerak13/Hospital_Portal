@@ -11,13 +11,16 @@ import ErrorMessage from "../../Components/ErrorMessage";
 import MainScreen from "../../Components/MainScreen";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {useSelector} from "react-redux";
 
 
 const PostBlog = () => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [content, setContent] = useState("");
-    const [userInfo, setUserInfo] = useState([])
+    //const [userInfo, setUserInfo] = useState([])
+    const userLogin = useSelector((state) => state.userLogin);
+    const { userInfo } = userLogin;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -33,10 +36,11 @@ const PostBlog = () => {
         console.log(result);
     }
 
-    useEffect(() => {
-        setUserInfo(JSON.parse(localStorage.getItem("userInfo")))
-    }, [])
+    // useEffect(() => {
+    //     setUserInfo(JSON.parse(localStorage.getItem("userInfo")))
+    // }, [])
     if (userInfo.ispatient==="false") {
+        debugger
         return (
             <MainScreen title="BLOG PAGE">
                 <div>

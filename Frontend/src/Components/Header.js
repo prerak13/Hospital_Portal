@@ -1,7 +1,7 @@
 //Header component used for importing footer in all pages
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import {
   Container,
   Nav,
@@ -14,11 +14,13 @@ import {
 import { logout } from "../Apiactions/userapis";
 
 function Header({ setSearch }) {
+  let history = useHistory();
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
   const logoutHandler = () => {
     dispatch(logout());
+    history.push("/");
   };
   useEffect(() => {}, [userInfo]);
 

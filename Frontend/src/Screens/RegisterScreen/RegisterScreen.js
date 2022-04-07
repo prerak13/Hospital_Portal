@@ -1,7 +1,7 @@
 //sanika ->sn820051@dal.ca
 //Register page frontend, used form, userregister state and submit handler to submit the register form.
 import React, { useState, useEffect } from "react";
-import { Row, Col } from "react-bootstrap";
+import {Row, Col, Form} from "react-bootstrap";
 import { register } from "../../Apiactions/userapis";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -9,7 +9,7 @@ import ErrorMessage from "../../Components/ErrorMessage";
 
 function RegisterScreen({ history }) {
   const [email, setEmail] = useState("");
-  const [ispatient, setIspatient] = useState("");
+  const [ispatient, setIspatient] = useState("true");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
@@ -57,23 +57,20 @@ function RegisterScreen({ history }) {
             <div class="form-group mt-1">
                 <label for="exampleInputEmail12">Email address</label>
                 <input  type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} required class="form-control" id="exampleInputEmail12"/>
-            </div>  
-            <label className="d-block" for="ipatient">Are you a patient?</label>     
-            <div  className="row ml-4">
-            <label className="form-check-label" for="flexCheckDefault1"> Yes</label>
-            <input id="flexCheckDefault1" className="form-check-input" type="checkbox" name="flexCheckDefault1" value="true" onChange={(e) => setIspatient(e.target.value)}/>
             </div>
-            <div className="row ml-4">
-              <label className="form-check-label" for="flexCheckDefault2">No</label>
-              <input id="flexCheckDefault2" className="form-check-input" type="checkbox" name="flexCheckDefault2" value="false" onChange={(e) => setIspatient(e.target.value)}/>
-            </div>
+            <label className="d-block" for="ipatient">Are you a patient?</label>
+                <Form.Control as="select" aria-label="" onChange={(e) => setIspatient(e.target.value)} >
+                    <option key={"true"} value="true">Yes</option>
+                    <option key={"false"} value="false">No</option>
+                </Form.Control>
+
             <div className="form-group mt-1">
                 <label for="exampleInputPassword1">Password</label>
                 <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} required class="form-control" id="exampleInputPassword1"/>
             </div>
             <div className="form-group mt-1">
                 <label for="examplepassword">Confirm Password</label>
-                <input placeholder="Confirm Password" onChange={(e) => setConfirmPassword(e.target.value)} required class="form-control" id="examplepassword"/>
+                <input type="password" placeholder="Confirm Password" onChange={(e) => setConfirmPassword(e.target.value)} required class="form-control" id="examplepassword"/>
             </div>
             <div className="d-flex justify-content-center">
                 <button type="submit" required class="btn btn-primary mt-1 d-flex justify-content-center">Register</button>
