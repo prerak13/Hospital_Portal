@@ -31,30 +31,30 @@ function Paymentform(props)
 	);
 	console.log(payment)
 
-	// if(error){
-	// 	console.log("error");
-	// }else{
-	// 	console.log(payment)
-	// }
-	if(!error) {
-        try {
-            const {id} = paymentMethod
-            const response = await axios.post("/api/users/payment", {
-                amount: 1000,
-                id
-            })
+	if(error){
+		console.log("error");
+	}else{
+		console.log(payment)
+	}
+	// if(!error) {
+    //     try {
+    //         const {id} = paymentMethod
+    //         const response = await axios.post("/api/users/payment", {
+    //             amount: 1000,
+    //             id
+    //         })
 
-            if(response.data.success) {
-                console.log("Successful payment")
-                setSuccess(true)
-            }
+    //         if(response.data.success) {
+    //             console.log("Successful payment")
+    //             setSuccess(true)
+    //         }
 
-        } catch (error) {
-            console.log("Error", error)
-        }
-    } else {
-        console.log(error.message)
-    }
+    //     } catch (error) {
+    //         console.log("Error", error)
+    //     }
+    // } else {
+    //     console.log(error.message)
+    // }
 	
 	
 }
