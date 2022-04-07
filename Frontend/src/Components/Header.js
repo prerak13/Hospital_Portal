@@ -63,7 +63,8 @@ function Header({ setSearch }) {
           </Nav>
 
           {userInfo ? (
-            <Nav>
+              userInfo.ispatient==="true"?
+                  (<Nav>
               <NavDropdown title="Appointments">
                 <NavDropdown.Item href="/appointment">
                   Book Appointments
@@ -72,7 +73,7 @@ function Header({ setSearch }) {
                   View Appointments
                 </NavDropdown.Item>
               </NavDropdown>
-            </Nav>
+            </Nav>):""
           ) : (
             ""
           )}
