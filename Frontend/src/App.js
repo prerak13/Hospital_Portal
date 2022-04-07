@@ -24,6 +24,9 @@ import RescheduleAppointmentScreen from "./Screens/AppointmentScreen/RescheduleA
 import Chatbot from "./Components/Chatbot/Chatbot";
 import LabReports from "./Screens/ViewReport/LabReports";
 import ReportUpload from "./Screens/ReportUpload/ReportUpload";
+import Stripe from "./Screens/PaymentModule/Stripe";
+
+
 function App() {
   const [search, setSearch] = useState("");
   return (
@@ -44,10 +47,12 @@ function App() {
         <Route path="/viewappointment" component={ViewAppointmentScreen} />
         <Route path="/viewreports" component={LabReports} />
         <Route path="/uploadreport" component={ReportUpload} />
+        <Route path="/paymentform" component={Stripe}/>
         <Route
           path="/rescheduleappointment"
           component={RescheduleAppointmentScreen}
         />
+        
       </main>
       <Footer />
     </Router>
