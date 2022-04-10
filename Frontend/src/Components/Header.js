@@ -59,7 +59,7 @@ function Header({ setSearch }) {
             ""
           )}
           <Nav>
-            <Nav.Link href="http://52.90.40.218:3000/" activeStyle>
+            <Nav.Link href="http://54.226.204.115:3000/" activeStyle>
               Careers
             </Nav.Link>
           </Nav>
