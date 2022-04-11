@@ -12,10 +12,7 @@ const Blogs = () => {
     const userLogin = useSelector((state) => state.userLogin);
     const { userInfo } = userLogin;
    // const [userInfo, setUserInfo] = useState([])
-
-    if (userInfo != null) {
-        debugger
-        if (userInfo.ispatient === "false" && !userInfo.isAdmin) {
+        if (userInfo != null && userInfo.ispatient === "false" && !userInfo.isAdmin) {
             return (
                 <div className="main-container">
                     <h1 className="main-heading">
@@ -41,7 +38,5 @@ const Blogs = () => {
                 </div>
             );
         }
-    }
-    ;
 }
 export default Blogs;
