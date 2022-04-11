@@ -40,7 +40,6 @@ const PostBlog = () => {
     //     setUserInfo(JSON.parse(localStorage.getItem("userInfo")))
     // }, [])
     if (userInfo.ispatient==="false") {
-        debugger
         return (
             <MainScreen title="BLOG PAGE">
                 <div>
