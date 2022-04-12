@@ -1,7 +1,7 @@
 ## CSCI 5709 : Assignment 3
 
 - Date Created: 31 Mar 2022
-- Last Modification Date: 31 Mar 2022
+- Last Modification Date: 12 Apr 2022
 - Git URL_: https://git.cs.dal.ca/choksi/webproject
 - Heroku URL: https://csci5709-group9.herokuapp.com/
 - Authors:
@@ -57,7 +57,7 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-###Accessing the modules
+### Accessing the modules
 
 Requirment : Successfull Login.
 Note: For testing purpose, please use the given credentials: Email - admin@gmail.com, Password - 123456
@@ -95,8 +95,17 @@ End with an example of getting some data out of the system or using it for a lit
 - [Node.js](https://nodejs.org/en/) - Back-end JavaScript runtime environment
 - [Express.js](https://expressjs.com/) - Back end web application framework for Node.js
 - [MongoDB](https://www.mongodb.com/) - NOSQL database
-- [Visual Studio] (https://visualstudio.microsoft.com/) - The Code editor used
-- [Heroku] (https://www.heroku.com/) - The deployment platform
+- [Visual Studio](https://visualstudio.microsoft.com/) - The Code editor used
+- [Heroku](https://www.heroku.com/) - The deployment platform
+
+## Acknowledgements
+
+- https://nodejs.org/en/
+- https://reactjs.org/
+- https://www.geeksforgeeks.org/how-to-use-grid-component-in-reactjs/
+- https://www.positronx.io/react-axios-tutorial-make-http-get-post-requests/
+- https://stripe.com/docs 
+- https://stripe.com/docs/testing
 
 ## Learn More
 
