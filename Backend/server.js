@@ -11,6 +11,7 @@ import dashboardRoutes from "./routes/dashboardRoutes.js";
 import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 
 import pathalologyRoutes from "./routes/pathalogyRoutes.js";
+import paymentRoutes from "./routes/paymentRoutes.js"
 
 import userDashboardRoutes from "./routes/userDashboardRoutes.js";
 dotenv.config();
@@ -32,7 +33,7 @@ app.use("/api/docappointment", docAppointmentRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/normalDash/", userDashboardRoutes);
 app.use("/api/pathology/", pathalologyRoutes);
-
+app.use("/api/payment/",paymentRoutes);
 const __dirname = path.resolve();
 //deploying app
 if (process.env.NODE_ENV === "production") {
