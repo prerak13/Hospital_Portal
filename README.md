@@ -3,7 +3,7 @@
 - Date Created: 31 Mar 2022
 - Last Modification Date: 12 Apr 2022
 - Git URL_: https://git.cs.dal.ca/choksi/webproject
-- Heroku URL: https://csci5709-group9.herokuapp.com/
+- Heroku URL: https://we-care-group9.herokuapp.com/
 - Authors:
   
   [Farhin Damania](fr454807@dal.ca)
