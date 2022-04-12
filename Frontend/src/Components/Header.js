@@ -80,11 +80,14 @@ function Header({ setSearch }) {
             ""
           )}
                {userInfo ? (
+              userInfo.ispatient==="true"?
+                  (
             <Nav>
              <Nav.Link href="/paymentform" activeStyle>
               Pay Online
             </Nav.Link>
             </Nav>
+          ):""
           ) : (
             ""
           )}
