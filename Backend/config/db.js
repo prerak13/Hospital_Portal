@@ -2,7 +2,7 @@
 import colors from "colors";
 import mongoose from "mongoose";
 
-const uri = "mongodb+srv://csci5408:Mtvroadies%4028@cluster1.uotao.mongodb.net/WeCare"
+const uri = ""
 const connectDB = async () => {
   try {
     const conn = await mongoose.connect(uri, {
